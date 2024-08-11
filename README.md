@@ -15,7 +15,7 @@
     <img src="https://img.shields.io/github/license/REIJI007/AdBlock_Rule_For_Quantumult" alt="license" style="margin-right: 10px;">
 </p>
 
-**一、从多个广告过滤器中提取拦截域名条目，删除重复项，并将它们转换为兼容Quantumult的列表格式，其中列表的每一项都写成了Matcher Ruleset格式数组，一行仅一条规则。该列表可以用作Quantumult的RULE-SET以阻止广告域名， powershell脚本每20分钟自动执行并将生成的文件发布在release中.**
+**一、从多个广告过滤器中提取拦截域名条目，删除重复项，并将它们转换为兼容Quantumult的列表格式，其中列表的每一项都写成了Matcher Ruleset格式数组，一行仅一条规则。该列表可以用作Quantumult的RULE-SET以阻止广告域名， powershell脚本每20分钟自动执行并将生成的文件发布在release中，下面是五个文件的地址.**
 
 <hr>
 
@@ -55,9 +55,8 @@
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_ruleset.txt*
 <br>
 <br>
-
-
 <hr>
+
 
 **二、理论上任何代理拦截域名且符合广告过滤器过滤语法的列表订阅URL都可加入此powershell脚本处理，请自行酌情添加过滤器订阅URL至脚本中进行处理，你可将该脚本代码复制到本地文本编辑器制作成.ps1后缀的文件运行在powershell上，注意修改生成的文件路径，最后在Quantumult的配置中实现调用本地生成的规则集文件，且Quantumult配置字段写成类似于如下例子**
 <br>
