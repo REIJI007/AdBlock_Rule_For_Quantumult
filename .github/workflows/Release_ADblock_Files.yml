@@ -31,7 +31,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add -f adblock_reject_quantumult_ruleset.conf adblock_reject_quantumult_ruleset.list adblock_reject_quantumult_ruleset.txt adblock_reject_quantumult_ruleset.yaml adblock_reject_quantumult_rule.txt timestamp.txt
+          git add -f adblock_reject_quantumult_ruleset.conf adblock_reject_quantumult_ruleset.list adblock_reject_quantumult_ruleset.txt adblock_reject_quantumult_ruleset.yaml adblock_reject_quantumult_domainset.conf adblock_reject_quantumult_domainset.list adblock_reject_quantumult_domainset.txt adblock_reject_quantumult_domainset.yaml adblock_reject_quantumult_rule.txt timestamp.txt
           git commit -m "Forced update of adblock files and timestamp"
           git push origin main --force  # 强制推送到main分支
         env:
@@ -93,7 +93,51 @@ jobs:
           asset_name: adblock_reject_quantumult_ruleset.yaml
           asset_content_type: application/x-yaml
 
-      # 步骤10：上传 adblock_reject_quantumult_rule.txt
+      # 步骤10：上传 adblock_reject_quantumult_domainset.conf
+      - name: Upload adblock_reject_quantumult_domainset.conf
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./adblock_reject_quantumult_domainset.conf
+          asset_name: adblock_reject_quantumult_domainset.conf
+          asset_content_type: text/plain
+
+      # 步骤11：上传 adblock_reject_quantumult_domainset.list
+      - name: Upload adblock_reject_quantumult_domainset.list
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./adblock_reject_quantumult_domainset.list
+          asset_name: adblock_reject_quantumult_domainset.list
+          asset_content_type: text/plain
+
+      # 步骤12：上传 adblock_reject_quantumult_domainset.txt
+      - name: Upload adblock_reject_quantumult_domainset.txt
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./adblock_reject_quantumult_domainset.txt
+          asset_name: adblock_reject_quantumult_domainset.txt
+          asset_content_type: text/plain
+
+      # 步骤13：上传 adblock_reject_quantumult_domainset.yaml
+      - name: Upload adblock_reject_quantumult_domainset.yaml
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./adblock_reject_quantumult_domainset.yaml
+          asset_name: adblock_reject_quantumult_domainset.yaml
+          asset_content_type: application/x-yaml
+
+      # 步骤14：上传 adblock_reject_quantumult_rule.txt
       - name: Upload adblock_reject_quantumult_rule.txt
         uses: actions/upload-release-asset@v1
         env:
