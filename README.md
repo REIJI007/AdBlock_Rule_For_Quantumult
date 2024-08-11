@@ -52,6 +52,34 @@
 <br>
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_ruleset.list*
 <br>
+<br>
+*6、适用于Quantumult的外部远程域名CONF格式拦截DOMAIN-SET规则集 adblock_reject_quantumult_ruleset.conf* 
+<br>
+*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.conf*
+<br>
+*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_domainset.conf*
+<br>
+<br>
+*7、适用于Quantumult的外部远程域名YAML格式拦截DOMAIN-SET规则集 adblock_reject_quantumult_ruleset.yaml* 
+<br>
+*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.yaml*
+<br>
+*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_shadowrocket_domainset.yaml*
+<br>
+<br>
+*8、适用于Quantumult的外部远程域名TXT格式拦截DOMAIN-SET规则集 adblock_reject_quantumult_ruleset.txt* 
+<br>
+*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.txt*
+<br>
+*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_domainset.txt*
+<br>
+<br>
+*9、适用于Quantumult的外部远程域名LIST格式拦截DOMAIN-SET规则集 adblock_reject_quantumult_ruleset.list* 
+<br>
+*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.list*
+<br>
+*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_domainset.list*
+<br>
 <hr>
 
 
