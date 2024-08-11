@@ -96,30 +96,66 @@ file-path=C:\Users\YourUsername\Documents\file.yaml, tag=广告域名拦截, for
   *使用方式一：下载releases中的adblock_reject_quantumult_rule.txt文件，里面的内容可直接粘贴到Quantumult的配置中的[filter_local]字段下作为拦截规则（需要手动下载更新）*
 
 
-  *使用方式二：将下面对应格式的配置文件中[rule]字段内容添加到你的配置文件充当远程规则集，需要特别注意配置文件的缩进和对齐（同步本仓库的云端部署的远程规则集配置)*
+  *使用方式二：将下面对应格式的配置文件中[filter_local]字段内容添加到你的配置文件充当远程规则集，需要特别注意配置文件的缩进和对齐（同步本仓库的云端部署的远程规则集配置)*
 
 <hr>
 
 ```conf
-#适用于Quantumult的外部远程拦截域名conf格式规则集
-[filter_remote]
-https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.conf,tag=广告域名拦截,policy=reject,update-interval=120,opt-parser=true,enabled=true
+#适用于Quantumult的txt格式RULE-SET
+[Rule]
+RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.txt,REJECT
 ```
 ```conf
-#适用于Quantumult的外部远程拦截域名list格式规则集
-[filter_remote]
-https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.list,tag=广告域名拦截,policy=reject,update-interval=120,opt-parser=true,enabled=true
+#适用于Quantumult的txt格式DOMAIN-SET
+[Rule]
+RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.txt,REJECT
+```
+
+
+
+<hr>
+
+```conf
+#适用于Quantumult的conf格式RULE-SET
+[Rule]
+RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.conf,REJECT
 ```
 ```conf
-#适用于Quantumult的外部远程拦截域名txt格式规则集
-[filter_remote]
-https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.txt,tag=广告域名拦截,policy=reject,update-interval=120,opt-parser=true,enabled=true
+#适用于Quantumult的conf格式DOMAIN-SET
+[Rule]
+RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.conf,REJECT
+```
+
+
+
+<hr>
+
+```conf
+#适用于Quantumult的yaml格式RULE-SET
+[Rule]
+RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.yaml,REJECT
 ```
 ```conf
-#适用于Quantumult的外部远程拦截域名yaml格式规则集
-[filter_remote]
-https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.yaml,tag=广告域名拦截,policy=reject,update-interval=120,opt-parser=true,enabled=true
+#适用于Quantumult的yaml格式DOMAIN-SET
+[Rule]
+RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.yaml,REJECT
 ```
+
+
+
+<hr>
+
+```conf
+#适用于Quantumult的list格式RULE-SET
+[Rule]
+RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.list,REJECT
+```
+```conf
+#适用于Quantumult的list格式DOMAIN-SET
+[Rule]
+RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.list,REJECT
+```
+
 <hr>
 
 **五、关于本仓库的使用效果为什么没有普通广告过滤器效果好的疑问解答：**
