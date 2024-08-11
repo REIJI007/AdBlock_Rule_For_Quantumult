@@ -50,6 +50,7 @@ $webClient = New-Object System.Net.WebClient
 $webClient.Encoding = [System.Text.Encoding]::UTF8
 $webClient.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
 
+# 遍历所有URL，处理每个链接内容
 foreach ($url in $urlList) {
     Write-Host "正在处理: $url"
     Add-Content -Path $logFilePath -Value "正在处理: $url"
@@ -57,6 +58,7 @@ foreach ($url in $urlList) {
         $content = $webClient.DownloadString($url)
         $lines = $content -split "`n"
 
+        # 过滤出有效的域名规则
         foreach ($line in $lines) {
             if ($line -match '^\|\|([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\^$' -or $line -match '^(0\.0\.0\.0|127\.0\.0\.1)\s+([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$' -or $line -match '^address=/([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/$') {
                 $domain = $Matches[1]
@@ -74,14 +76,14 @@ foreach ($url in $urlList) {
     }
 }
 
-# 对规则进行排序并添加DOMAIN,前缀
-$formattedRules = $uniqueRules | Sort-Object | ForEach-Object {"DOMAIN,$_"}
+# 对规则进行排序并添加 DOMAIN, 前缀
+$formattedRules = $uniqueRules | Sort-Object | ForEach-Object {"  - DOMAIN,$_"}
 
 # 统计生成的规则条目数量
 $ruleCount = $uniqueRules.Count
 
-# 创建文本格式的字符串
-$textContent = @"
+# 创建 YAML 格式的字符串
+$yamlContent = @"
 # Title: AdBlock_Rule_For_Quantumult_RULESET
 # Description: 适用于Quantumult的域名拦截yaml格式RULE-SET，每20分钟更新一次，确保即时同步上游减少误杀
 # Homepage: https://github.com/REIJI007/AdBlock_Rule_For_Quantumult
@@ -91,12 +93,13 @@ $textContent = @"
 # Generated AdBlock rules
 # Total entries: $ruleCount
 
+payload:
 $($formattedRules -join "`n")
 "@
 
 # 定义输出文件路径
 $outputPath = "$PSScriptRoot/adblock_reject_quantumult_ruleset.yaml"
-$textContent | Out-File -FilePath $outputPath -Encoding utf8
+$yamlContent | Out-File -FilePath $outputPath -Encoding utf8
 
 # 输出生成的有效规则总数
 Write-Host "生成的有效规则总数: $ruleCount"
