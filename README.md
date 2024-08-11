@@ -105,6 +105,8 @@ file-path=C:\Users\YourUsername\Documents\file.yaml, tag=广告域名拦截, for
 
   *使用方式二：将下面对应格式的配置文件中[rule]字段内容添加到你的配置文件充当远程规则集，需要特别注意配置文件的缩进和对齐（同步本仓库的云端部署的远程规则集配置)*
 
+<hr>
+
 ```conf
 #适用于Quantumult的外部远程拦截域名conf格式规则集
 [filter_remote]
@@ -125,7 +127,7 @@ https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adbl
 [filter_remote]
 https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.yaml, tag=广告域名拦截, force-policy=reject, update-interval=120, opt-parser=true, enabled=true
 ```
-
+<hr>
 
 
 **五、关于本仓库的使用效果为什么没有普通广告过滤器效果好的疑问解答：**
