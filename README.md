@@ -107,22 +107,22 @@ file-path=C:\Users\YourUsername\Documents\file.yaml, tag=广告域名拦截, for
 ```conf
 #适用于Quantumult的外部远程拦截域名conf格式规则集
 [filter_remote]
-https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.conf, tag=广告域名拦截, force-policy=reject, update-interval=120, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.conf,tag=广告域名拦截,policy=reject,update-interval=120,opt-parser=true,enabled=true
 ```
 ```conf
 #适用于Quantumult的外部远程拦截域名list格式规则集
 [filter_remote]
-https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.list, tag=广告域名拦截, force-policy=reject, update-interval=120, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.list,tag=广告域名拦截,policy=reject,update-interval=120,opt-parser=true,enabled=true
 ```
 ```conf
 #适用于Quantumult的外部远程拦截域名txt格式规则集
 [filter_remote]
-https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.txt, tag=广告域名拦截, force-policy=reject, update-interval=120, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.txt,tag=广告域名拦截,policy=reject,update-interval=120,opt-parser=true,enabled=true
 ```
 ```conf
 #适用于Quantumult的外部远程拦截域名yaml格式规则集
 [filter_remote]
-https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.yaml, tag=广告域名拦截, force-policy=reject, update-interval=120, opt-parser=true, enabled=true
+https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.yaml,tag=广告域名拦截,policy=reject,update-interval=120,opt-parser=true,enabled=true
 ```
 <hr>
 
