@@ -49,37 +49,37 @@ jobs:
           body: "Periodic release of adblock files."  # 发布说明
           draft: false  # 创建正式发布，而非草稿
 
-      # 步骤6：上传 adblock_reject_Quantumult_rule.txt
-      - name: Upload adblock_reject_Quantumult_rule.txt
+      # 步骤6：上传 adblock_reject_quantumult_rule.txt
+      - name: Upload adblock_reject_quantumult_rule.txt
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}  # 使用创建发布时生成的URL
-          asset_path: ./adblock_reject_Quantumult_rule.txt
-          asset_name: adblock_reject_Quantumult_rule.txt
+          asset_path: ./adblock_reject_quantumult_rule.txt
+          asset_name: adblock_reject_quantumult_rule.txt
           asset_content_type: text/plain
 
-      # 步骤7：上传 adblock_reject_Quantumult_ruleset.list
-      - name: Upload adblock_reject_Quantumult_ruleset.list
+      # 步骤7：上传 adblock_reject_quantumult_ruleset.list
+      - name: Upload adblock_reject_quantumult_ruleset.list
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./adblock_reject_Quantumult_ruleset.list
-          asset_name: adblock_reject_Quantumult_ruleset.list
+          asset_path: ./adblock_reject_quantumult_ruleset.list
+          asset_name: adblock_reject_quantumult_ruleset.list
           asset_content_type: text/plain
 
-      # 步骤8：上传 adblock_reject_Quantumult_ruleset.txt
-      - name: Upload adblock_reject_Quantumult_ruleset.txt
+      # 步骤8：上传 adblock_reject_quantumult_ruleset.txt
+      - name: Upload adblock_reject_quantumult_ruleset.txt
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./adblock_reject_Quantumult_ruleset.txt
-          asset_name: adblock_reject_Quantumult_ruleset.txt
+          asset_path: ./adblock_reject_quantumult_ruleset.txt
+          asset_name: adblock_reject_quantumult_ruleset.txt
           asset_content_type: text/plain
 
       # 步骤9：上传 adblock_reject_quantumult_ruleset.conf
