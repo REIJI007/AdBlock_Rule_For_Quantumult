@@ -24,11 +24,11 @@
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_ruleset.conf*
 <br>
 <br>
-*2、适用于Quantumult的外部远程域名LIST格式拦截RULE-SET规则集 adblock_reject_quantumult_ruleset.list* 
+*2、适用于Quantumult的外部远程域名YAML格式拦截RULE-SET规则集 adblock_reject_quantumult_ruleset.yaml* 
 <br>
-*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.list*
+*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.yaml*
 <br>
-*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_ruleset.list*
+*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_shadowrocket_ruleset.yaml*
 <br>
 <br>
 *3、适用于Quantumult的外部远程域名TXT格式拦截RULE-SET规则集 adblock_reject_quantumult_ruleset.txt* 
@@ -38,11 +38,11 @@
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_ruleset.txt*
 <br>
 <br>
-*4、适用于Quantumult的外部远程域名YAML格式拦截RULE-SET规则集 adblock_reject_quantumult_ruleset.yaml* 
+*4、适用于Quantumult的外部远程域名LIST格式拦截RULE-SET规则集 adblock_reject_quantumult_ruleset.list* 
 <br>
-*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.yaml*
+*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.list*
 <br>
-*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_shadowrocket_ruleset.yaml*
+*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_ruleset.list*
 <br>
 <br>
 *5、可直接下载并复制到[filter_remote]字段下的Matcher Ruleset规则条目列表 adblock_reject_quantumult_rule.txt* 
