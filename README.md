@@ -39,7 +39,14 @@
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_ruleset.yaml*
 <br>
 <br>
-*4、适用于Quantumult的外部远程域名TXT格式拦截RULE-SET规则集 adblock_reject_quantumult_ruleset.txt* 
+*4、适用于Quantumult的外部远程域名LIST格式拦截RULE-SET规则集 adblock_reject_quantumult_ruleset.list* 
+<br>
+*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.list*
+<br>
+<br>
+*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_ruleset.list*
+<br>
+*5、适用于Quantumult的外部远程域名TXT格式拦截RULE-SET规则集 adblock_reject_quantumult_ruleset.txt* 
 <br>
 *https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.txt*
 <br>
@@ -47,13 +54,7 @@
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_ruleset.txt*
 <br>
 <br>
-*5、适用于Quantumult的外部远程域名LIST格式拦截RULE-SET规则集 adblock_reject_quantumult_ruleset.list* 
-<br>
-*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.list*
-<br>
-<br>
-*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_ruleset.list*
-<br>
+
 
 **二、理论上任何代理拦截域名且符合广告过滤器过滤语法的列表订阅URL都可加入此powershell脚本处理，请自行酌情添加过滤器订阅URL至脚本中进行处理，你可将该脚本代码复制到本地文本编辑器制作成.ps1后缀的文件运行在powershell上，注意修改生成的文件路径，最后在Quantumult的配置中实现调用本地生成的规则集文件，且Quantumult配置字段写成类似于如下例子**
 <br>
