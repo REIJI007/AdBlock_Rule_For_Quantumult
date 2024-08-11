@@ -100,23 +100,31 @@ file-path=C:\Users\YourUsername\Documents\file.yaml, tag=广告域名拦截, for
 
 **四、关于本仓库使用方式：**
 
-  *使用方式一：下载releases中的adblock_reject_surge_ruleset.txt文件或者adblock_reject_surge_domainset.txt，里面的内容可直接粘贴到Surge的配置中的[rules]字段下作为拦截规则（需要手动下载更新）*
-
+  *使用方式一：下载releases中的adblock_reject_quantumult_rule.txt文件，里面的内容可直接粘贴到Quantumult的配置中的[filter_local]字段下作为拦截规则（需要手动下载更新）*
 
 
   *使用方式二：将下面对应格式的配置文件中[rule]字段内容添加到你的配置文件充当远程规则集，需要特别注意配置文件的缩进和对齐（同步本仓库的云端部署的远程规则集配置)*
 
 ```conf
-#适用于Surge的RULE-SET
-[Rule]
-RULE-SET,https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Surge@main/adblock_reject_surge_ruleset.txt,REJECT
+#适用于Quantumult的外部远程拦截域名conf格式规则集
+[filter_remote]
+https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.conf, tag=广告域名拦截, force-policy=reject, update-interval=120, opt-parser=true, enabled=true
 ```
 ```conf
-#适用于Surge的DOMAIN-SET
-[Rule]
-RULE-SET,https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Surge@main/adblock_reject_surge_domainset.txt,REJECT
+#适用于Quantumult的外部远程拦截域名list格式规则集
+[filter_remote]
+https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.list, tag=广告域名拦截, force-policy=reject, update-interval=120, opt-parser=true, enabled=true
 ```
-
+```conf
+#适用于Quantumult的外部远程拦截域名txt格式规则集
+[filter_remote]
+https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.txt, tag=广告域名拦截, force-policy=reject, update-interval=120, opt-parser=true, enabled=true
+```
+```conf
+#适用于Quantumult的外部远程拦截域名yaml格式规则集
+[filter_remote]
+https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.yaml, tag=广告域名拦截, force-policy=reject, update-interval=120, opt-parser=true, enabled=true
+```
 
 
 
