@@ -112,7 +112,7 @@ DOMAIN-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumul
 ```
 
 
-
+<hr>
 <hr>
 
 ```conf
@@ -127,7 +127,7 @@ DOMAIN-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumul
 ```
 
 
-
+<hr>
 <hr>
 
 ```conf
@@ -142,7 +142,7 @@ DOMAIN-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumul
 ```
 
 
-
+<hr>
 <hr>
 
 ```conf
