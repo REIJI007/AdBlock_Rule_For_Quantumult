@@ -43,7 +43,7 @@
 # 适用于Quantumult X的本地广告域名拦截规则
 [filter_local]
 # 广告域名拦截规则
-DOMAIN-SET,/path/to/your/adblock_list.txt,REJECT
+DOMAIN-SET,/path/to/your/file.list,REJECT
 ```
 <hr>
 
