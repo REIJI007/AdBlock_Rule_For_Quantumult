@@ -71,18 +71,8 @@ jobs:
           asset_name: adblock_reject_quantumult_ruleset.list
           asset_content_type: text/plain
 
-      # 步骤8：上传 adblock_reject_quantumult_rule.txt
-      - name: Upload adblock_reject_quantumult_rule.txt
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./adblock_reject_quantumult_rule.txt
-          asset_name: adblock_reject_quantumult_rule.txt
-          asset_content_type: text/plain
 
-      # 步骤9：上传 adblock_reject_quantumult_domainset.conf
+      # 步骤8：上传 adblock_reject_quantumult_domainset.conf
       - name: Upload adblock_reject_quantumult_domainset.conf
         uses: actions/upload-release-asset@v1
         env:
@@ -93,7 +83,7 @@ jobs:
           asset_name: adblock_reject_quantumult_domainset.conf
           asset_content_type: text/plain
 
-      # 步骤10：上传 adblock_reject_quantumult_domainset.list
+      # 步骤9：上传 adblock_reject_quantumult_domainset.list
       - name: Upload adblock_reject_quantumult_domainset.list
         uses: actions/upload-release-asset@v1
         env:
