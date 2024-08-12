@@ -1,5 +1,5 @@
-# Title: AdBlock_Rule_For_Quantumult_RULESET
-# Description: 适用于Quantumult的域名拦截list格式RULE-SET，每20分钟更新一次，确保即时同步上游减少误杀
+# Title: AdBlock_Rule_For_Quantumult_List
+# Description: 适用于Quantumult的域名拦截list列表，每20分钟更新一次，确保即时同步上游减少误杀
 # Homepage: https://github.com/REIJI007/AdBlock_Rule_For_Quantumult
 
 # 定义广告过滤器URL列表
@@ -82,8 +82,8 @@ $ruleCount = $uniqueRules.Count
 
 # 创建文本格式的字符串
 $textContent = @"
-# Title: AdBlock_Rule_For_Quantumult_RULESET
-# Description: 适用于Quantumult的域名拦截list格式RULE-SET，每20分钟更新一次，确保即时同步上游减少误杀
+# Title: AdBlock_Rule_For_Quantumult_List
+# Description: 适用于Quantumult的域名拦截list列表，每20分钟更新一次，确保即时同步上游减少误杀
 # Homepage: https://github.com/REIJI007/AdBlock_Rule_For_Quantumult
 # LICENSE1：https://github.com/REIJI007/AdBlock_Rule_For_Quantumult/blob/main/LICENSE-GPL3.0
 # LICENSE2：https://github.com/REIJI007/AdBlock_Rule_For_Quantumult/blob/main/LICENSE-CC%20BY-NC-SA%204.0
