@@ -16,20 +16,17 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Process Quantumult Ruleset Files
+      - name: Process Quantumult Ruleset File
         run: |
-          # 定义要处理的文件名
-          files=("adblock_reject_quantumult_ruleset.list" "adblock_reject_quantumult_ruleset.txt")
-          # 遍历并处理每个文件
-          for file in "${files[@]}"; do
-            # 生成目标文件名 (将 ruleset 替换为 domainset)
-            output_file=$(echo "$file" | sed 's/ruleset/domainset/')
-            # 处理文件：
-            # 1. 保留注释和 "payload:"，只删除 "DOMAIN,"
-            # 2. 将注释中的 "RULE-SET" 替换为 "DOMAIN-SET"
-            # 3. 将注释中的 "RULESET" 替换为 "DOMAINSET"
-            sed -E 's/DOMAIN,//g; s/RULE-SET/DOMAIN-SET/g; s/RULESET/DOMAINSET/g' "$file" > "$output_file"
-          done
+          # 处理文件 adblock_reject_quantumult_ruleset.list
+          input_file="adblock_reject_quantumult_ruleset.list"
+          output_file="adblock_reject_quantumult_domainset.list"
+          
+          # 处理文件：
+          # 1. 保留注释和 "payload:"，只删除 "DOMAIN,"
+          # 2. 将注释中的 "RULE-SET" 替换为 "DOMAIN-SET"
+          # 3. 将注释中的 "RULESET" 替换为 "DOMAINSET"
+          sed -E 's/DOMAIN,//g; s/RULE-SET/DOMAIN-SET/g; s/RULESET/DOMAINSET/g' "$input_file" > "$output_file"
 
       - name: Commit and Push Changes
         env:
@@ -39,10 +36,10 @@ jobs:
           git config --local user.name "GitHub Action"
 
           # 添加处理后的文件
-          git add adblock_reject_quantumult_domainset.*
+          git add adblock_reject_quantumult_domainset.list
 
           # 提交更改或进行空提交以保持工作流运行
-          git commit -m "Processed and generated Quantumult domainset files" || git commit --allow-empty -m "No changes, empty commit to keep the workflow running"
+          git commit -m "Processed and generated Quantumult domainset file" || git commit --allow-empty -m "No changes, empty commit to keep the workflow running"
 
           # 强制推送
           git push --force "https://${TOKEN}@github.com/${{ github.repository }}.git" HEAD:main
