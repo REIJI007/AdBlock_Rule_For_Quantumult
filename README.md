@@ -33,20 +33,6 @@
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_ruleset.conf*
 <br>
 <br>
-*3、适用于Quantumult的外部远程域名YAML格式拦截RULE-SET规则集 adblock_reject_quantumult_ruleset.yaml* 
-<br>
-*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.yaml*
-<br>
-*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_shadowrocket_ruleset.yaml*
-<br>
-<br>
-*4、适用于Quantumult的外部远程域名TXT格式拦截RULE-SET规则集 adblock_reject_quantumult_ruleset.txt* 
-<br>
-*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.txt*
-<br>
-*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_ruleset.txt*
-<br>
-<br>
 *5、适用于Quantumult的外部远程域名LIST格式拦截RULE-SET规则集 adblock_reject_quantumult_ruleset.list* 
 <br>
 *https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.list*
@@ -59,20 +45,6 @@
 *https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.conf*
 <br>
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_domainset.conf*
-<br>
-<br>
-*7、适用于Quantumult的外部远程域名YAML格式拦截DOMAIN-SET规则集 adblock_reject_quantumult_ruleset.yaml* 
-<br>
-*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.yaml*
-<br>
-*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_shadowrocket_domainset.yaml*
-<br>
-<br>
-*8、适用于Quantumult的外部远程域名TXT格式拦截DOMAIN-SET规则集 adblock_reject_quantumult_ruleset.txt* 
-<br>
-*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.txt*
-<br>
-*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_domainset.txt*
 <br>
 <br>
 *9、适用于Quantumult的外部远程域名LIST格式拦截DOMAIN-SET规则集 adblock_reject_quantumult_ruleset.list* 
@@ -100,19 +72,7 @@ file-path=C:\Users\YourUsername\Documents\file.conf, tag=广告域名拦截, for
 ```conf
 #适用于Quantumult的外部本地拦截域名规则集
 [filter_local]
-file-path=C:\Users\YourUsername\Documents\file.txt, tag=广告域名拦截, force-policy=reject, enabled=true  #你的外部本地拦截域名规则集文件保存路径
-
-```
-```conf
-#适用于Quantumult的外部本地拦截域名规则集
-[filter_local]
 file-path=C:\Users\YourUsername\Documents\file.list, tag=广告域名拦截, force-policy=reject, enabled=true  #你的外部本地拦截域名规则集文件保存路径
-
-```
-```conf
-#适用于Quantumult的外部本地拦截域名规则集
-[filter_local]
-file-path=C:\Users\YourUsername\Documents\file.yaml, tag=广告域名拦截, force-policy=reject, enabled=true  #你的外部本地拦截域名规则集文件保存路径
 
 ```
 <hr>
@@ -129,20 +89,6 @@ file-path=C:\Users\YourUsername\Documents\file.yaml, tag=广告域名拦截, for
 
 <hr>
 
-```conf
-#适用于Quantumult的txt格式RULE-SET
-[filter_remote]
-RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.txt,REJECT
-```
-```conf
-#适用于Quantumult的txt格式DOMAIN-SET
-[filter_remote]
-DOMAIN-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.txt,REJECT
-```
-
-
-<hr>
-<hr>
 
 ```conf
 #适用于Quantumult的conf格式RULE-SET
@@ -159,20 +105,7 @@ DOMAIN-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumul
 <hr>
 <hr>
 
-```conf
-#适用于Quantumult的yaml格式RULE-SET
-[filter_remote]
-RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.yaml,REJECT
-```
-```conf
-#适用于Quantumult的yaml格式DOMAIN-SET
-[filter_remote]
-DOMAIN-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.yaml,REJECT
-```
 
-
-<hr>
-<hr>
 
 ```conf
 #适用于Quantumult的list格式RULE-SET
