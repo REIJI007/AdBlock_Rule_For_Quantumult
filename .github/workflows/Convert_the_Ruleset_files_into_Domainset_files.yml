@@ -19,7 +19,7 @@ jobs:
       - name: Process Quantumult Ruleset Files
         run: |
           # 定义要处理的文件名
-          files=("adblock_reject_quantumult_ruleset.conf" "adblock_reject_quantumult_ruleset.list" "adblock_reject_quantumult_ruleset.txt" "adblock_reject_quantumult_ruleset.yaml")
+          files=("adblock_reject_quantumult_ruleset.conf" "adblock_reject_quantumult_ruleset.list")
           # 遍历并处理每个文件
           for file in "${files[@]}"; do
             # 生成目标文件名 (将 ruleset 替换为 domainset)
