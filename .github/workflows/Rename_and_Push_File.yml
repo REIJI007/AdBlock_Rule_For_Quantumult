@@ -1,4 +1,4 @@
-name: Rename and Push File
+name: Rename_and_Push_File
 
 on:
   workflow_dispatch:
