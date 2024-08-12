@@ -37,6 +37,23 @@ jobs:
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'  # 配置提交用户邮箱
         git add -f adblock_reject_quantumult_ruleset.txt  # 强制添加生成的文件
         git commit -m "Forced update of Quantumult txt file"  # 提交更改
-        git push origin main --force  # 强制推送到main分支
+        
+        # 自定义推送重试机制
+        max_retries=5  # 最大重试次数
+        attempt=0  # 当前尝试次数
+
+        while [ $attempt -lt $max_retries ]; do
+          git push origin main --force  # 尝试推送更改
+          if [ $? -eq 0 ]; then
+            echo "Push successful"  # 如果推送成功，退出循环
+            exit 0
+          fi
+          attempt=$((attempt + 1))  # 增加尝试次数
+          echo "Push failed, retrying ($attempt/$max_retries)..."  # 输出重试信息
+          sleep 5  # 等待 5 秒再重试
+        done
+
+        echo "Push failed after $max_retries attempts"  # 如果达到最大重试次数，输出失败信息
+        exit 1  # 退出并标记为失败
       env:
         TOKEN: ${{ secrets.TOKEN }}  # 使用存储在仓库密钥中的TOKEN
