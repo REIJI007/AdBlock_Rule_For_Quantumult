@@ -22,6 +22,7 @@
 <br>
 *https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult.list*
 <br>
+<br>
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult.list*
 <hr>
 
