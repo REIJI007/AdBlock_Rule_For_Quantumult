@@ -24,6 +24,7 @@
 <br>
 <br>
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult.list*
+<br>
 *2、适用于Quantumult的外部远程域名拦截txt格式Matcher Ruleset列表 adblock_reject_quantumult.txt* 
 <br>
 *https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult.txt*
