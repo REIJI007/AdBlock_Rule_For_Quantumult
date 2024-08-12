@@ -19,35 +19,14 @@
 
 
 <hr>
-*1、可直接下载并复制到[filter_remote]字段下的Matcher Ruleset规则条目列表 adblock_reject_quantumult_rule.txt* 
-
-*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_rule.txt*
-<br>
-*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_rule.txt*
-<br>
-<br>
-*2、适用于Quantumult的外部远程域名CONF格式拦截RULE-SET规则集 adblock_reject_quantumult_ruleset.conf* 
-<br>
-*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.conf*
-<br>
-*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_ruleset.conf*
-<br>
-<br>
-*3、适用于Quantumult的外部远程域名LIST格式拦截RULE-SET规则集 adblock_reject_quantumult_ruleset.list* 
+*1、适用于Quantumult的外部远程域名LIST格式拦截RULE-SET规则集 adblock_reject_quantumult_ruleset.list* 
 <br>
 *https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.list*
 <br>
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_ruleset.list*
 <br>
 <br>
-*4、适用于Quantumult的外部远程域名CONF格式拦截DOMAIN-SET规则集 adblock_reject_quantumult_ruleset.conf* 
-<br>
-*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.conf*
-<br>
-*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_domainset.conf*
-<br>
-<br>
-*5、适用于Quantumult的外部远程域名LIST格式拦截DOMAIN-SET规则集 adblock_reject_quantumult_ruleset.list* 
+*2、适用于Quantumult的外部远程域名LIST格式拦截DOMAIN-SET规则集 adblock_reject_quantumult_ruleset.list* 
 <br>
 *https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.list*
 <br>
@@ -82,27 +61,11 @@ file-path=C:\Users\YourUsername\Documents\file.list, tag=广告域名拦截, for
 <br>
 **四、关于本仓库使用方式：**
 
-  *使用方式一：下载releases中的adblock_reject_quantumult_rule.txt文件，里面的内容可直接粘贴到Quantumult的配置中的[filter_local]字段下作为拦截规则（需要手动下载更新）*
+  *使用方式一：下载releases中的文件，编写Quantumult的配置中的[filter_local]字段，引用本地规则集作为拦截规则（需要手动下载更新）*
 
 
   *使用方式二：将下面对应格式的配置文件中[filter_remote]字段内容添加到你的配置文件充当远程规则集，需要特别注意配置文件的缩进和对齐（同步本仓库的云端部署的远程规则集配置)*
 
-<hr>
-
-
-```conf
-#适用于Quantumult的conf格式RULE-SET
-[filter_remote]
-RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.conf,REJECT
-```
-```conf
-#适用于Quantumult的conf格式DOMAIN-SET
-[filter_remote]
-DOMAIN-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.conf,REJECT
-```
-
-
-<hr>
 <hr>
 
 
