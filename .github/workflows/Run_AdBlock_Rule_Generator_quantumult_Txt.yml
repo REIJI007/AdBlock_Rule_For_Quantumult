@@ -1,4 +1,4 @@
-name: Run_AdBlock_Rule_Generator_CONF  # 工作流名称
+name: Run_AdBlock_Rule_Generator_TXT  # 工作流名称
 
 on:
   schedule:
@@ -28,20 +28,15 @@ jobs:
         sudo apt-get install -y powershell  # 安装 PowerShell 7
         rm packages-microsoft-prod.deb  # 删除包配置文件
 
-    - name: Run adblock_rule_generator_quantumult_conf.ps1  # 运行 adblock_rule_generator_quantumult_conf.ps1 脚本
-      run: pwsh -File ./adblock_rule_generator_quantumult_conf.ps1  # 使用 PowerShell 7 运行脚本
+    - name: Run adblock_rule_generator_quantumult_txt.ps1  # 运行 adblock_rule_generator_quantumult_txt.ps1 脚本
+      run: pwsh -File ./adblock_rule_generator_quantumult_txt.ps1  # 使用 PowerShell 7 运行脚本
 
-    - name: Force Add and Commit Quantumult conf file  # 强制添加并提交 Quantumult conf 文件
+    - name: Force Add and Commit Quantumult txt file  # 强制添加并提交 Quantumult txt 文件
       run: |
-        git config --global user.name 'github-actions'  # 配置提交用户名
-        git config --global user.email 'github-actions@github.com'  # 配置提交邮箱
-        git add -f adblock_reject_quantumult_ruleset.conf  # 强制添加 adblock_reject_quantumult_ruleset.conf 文件
-        git commit -m 'Update adblock_reject_quantumult_ruleset.conf' || git commit --allow-empty -m 'Empty commit to force push'  # 提交更改，若无更改则提交空更改
-
-    - name: Retry Push Quantumult conf file  # 推送 Quantumult conf 文件，失败时重试
+        git config --global user.name 'github-actions[bot]'  # 配置提交用户名
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'  # 配置提交用户邮箱
+        git add -f adblock_reject_quantumult_ruleset.txt  # 强制添加生成的文件
+        git commit -m "Forced update of Quantumult txt file"  # 提交更改
+        git push origin main --force  # 强制推送到main分支
       env:
-        TOKEN: ${{ secrets.TOKEN }}  # 使用 GitHub 密钥进行身份验证
-      run: |
-        for i in {1..5}; do  # 尝试最多5次
-          git push --force origin HEAD && exit 0 || (echo "Push failed, retrying in 10 seconds..." && sleep 10)
-        done
+        TOKEN: ${{ secrets.TOKEN }}  # 使用存储在仓库密钥中的TOKEN
