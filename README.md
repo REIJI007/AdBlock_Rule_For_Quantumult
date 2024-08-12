@@ -40,9 +40,9 @@
 <hr>
 
 ```conf
-# 适用于Quantumult X的本地广告域名拦截规则
+# 适用于Quantumult的本地广告域名拦截规则
 [filter_local]
-# 广告域名拦截规则
+# 广告域名拦截规则文件路径
 DOMAIN-SET,/path/to/your/file.list,REJECT
 ```
 <hr>
