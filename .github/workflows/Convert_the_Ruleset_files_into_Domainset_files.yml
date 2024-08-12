@@ -27,7 +27,8 @@ jobs:
             # 处理文件：
             # 1. 保留注释和 "payload:"，只删除 "DOMAIN,"
             # 2. 将注释中的 "RULE-SET" 替换为 "DOMAIN-SET"
-            sed -E 's/DOMAIN,//g; s/RULE-SET/DOMAIN-SET/g' "$file" > "$output_file"
+            # 3. 将注释中的 "RULESET" 替换为 "DOMAINSET"
+            sed -E 's/DOMAIN,//g; s/RULE-SET/DOMAIN-SET/g; s/RULESET/DOMAINSET/g' "$file" > "$output_file"
           done
 
       - name: Commit and Push Changes
