@@ -59,9 +59,9 @@ file-path=C:\Users\YourUsername\Documents\file.list, tag=广告域名拦截, for
 <hr>
 
 ```conf
-#适用于Quantumult的外部远程拦截广告域名规则Matcher Ruleset列表
+# 适用于 Quantumult 的外部远程拦截广告域名规则 Matcher Ruleset 列表
 [filter_remote]
-https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult.list, tag=广告域名拦截规则, force-policy=REJECT, update-interval=120, opt-parser=true, enabled=true
+adblock, https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult.list, interval=120, opt-parser=true, force-policy=REJECT, enabled=true
 ```
 <hr>
 
