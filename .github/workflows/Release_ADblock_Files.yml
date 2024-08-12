@@ -30,7 +30,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add -f adblock_reject_quantumult_ruleset.txt adblock_reject_quantumult_ruleset.list adblock_reject_quantumult_domainset.txt adblock_reject_quantumult_domainset.list timestamp.txt
+          git add -f adblock_reject_quantumult_ruleset.list adblock_reject_quantumult_domainset.list timestamp.txt
           git commit -m "Forced update of adblock files and timestamp"
           git push origin main --force  # 强制推送到main分支
         env:
@@ -48,40 +48,18 @@ jobs:
           body: "Periodic release of adblock files."  # 发布说明
           draft: false  # 创建正式发布，而非草稿
 
-      # 步骤6：上传 adblock_reject_quantumult_ruleset.txt
-      - name: Upload adblock_reject_quantumult_ruleset.txt
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}  # 使用创建发布时生成的URL
-          asset_path: ./adblock_reject_quantumult_ruleset.txt
-          asset_name: adblock_reject_quantumult_ruleset.txt
-          asset_content_type: text/plain
-
-      # 步骤7：上传 adblock_reject_quantumult_ruleset.list
+      # 步骤6：上传 adblock_reject_quantumult_ruleset.list
       - name: Upload adblock_reject_quantumult_ruleset.list
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          upload_url: ${{ steps.create_release.outputs.upload_url }}  # 使用创建发布时生成的URL
           asset_path: ./adblock_reject_quantumult_ruleset.list
           asset_name: adblock_reject_quantumult_ruleset.list
           asset_content_type: text/plain
 
-      # 步骤8：上传 adblock_reject_quantumult_domainset.txt
-      - name: Upload adblock_reject_quantumult_domainset.txt
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./adblock_reject_quantumult_domainset.txt
-          asset_name: adblock_reject_quantumult_domainset.txt
-          asset_content_type: text/plain
-
-      # 步骤9：上传 adblock_reject_quantumult_domainset.list
+      # 步骤7：上传 adblock_reject_quantumult_domainset.list
       - name: Upload adblock_reject_quantumult_domainset.list
         uses: actions/upload-release-asset@v1
         env:
