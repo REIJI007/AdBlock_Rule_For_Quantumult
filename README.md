@@ -32,20 +32,6 @@
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_domainset.list*
 <br>
 
-*3、适用于Quantumult的外部远程域名txt格式拦截RULE-SET规则集 adblock_reject_quantumult_ruleset.txt* 
-<br>
-*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.txt*
-<br>
-*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_ruleset.txt*
-<br>
-
-*4、适用于Quantumult的外部远程域名txt格式拦截DOMAIN-SET规则集 adblock_reject_quantumult_ruleset.txt* 
-<br>
-*https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.txt*
-<br>
-*https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_domainset.txt*
-<br>
-<hr>
 
 
 **二、理论上任何代理拦截域名且符合广告过滤器过滤语法的列表订阅URL都可加入此powershell脚本处理，请自行酌情添加过滤器订阅URL至脚本中进行处理，你可将该脚本代码复制到本地文本编辑器制作成.ps1后缀的文件运行在powershell上，注意修改生成的文件路径，最后在Quantumult的配置中实现调用本地生成的规则集文件，且Quantumult配置字段写成类似于如下例子**
@@ -54,12 +40,6 @@
 *简而言之就是可以让你DIY出希望得到的拦截域名Matcher Ruleset列表，缺点是此做法只适合本地定制使用，当然你也可以像本仓库一样部署到GitHub上面，见仁见智*
 <hr>
 
-
-```conf
-#适用于Quantumult的外部本地拦截域名txt格式规则集
-[filter_local]
-file-path=C:\Users\YourUsername\Documents\file.txt, tag=广告域名拦截, force-policy=reject, enabled=true  #你的外部本地拦截域名规则集文件保存路径
-```
 ```conf
 #适用于Quantumult的外部本地拦截域名list格式规则集
 [filter_local]
@@ -89,16 +69,6 @@ RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/
 #适用于Quantumult的list格式DOMAIN-SET
 [filter_remote]
 DOMAIN-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.list,REJECT
-```
-```conf
-#适用于Quantumult的txt格式RULE-SET
-[filter_remote]
-RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.txt,REJECT
-```
-```conf
-#适用于Quantumult的txt格式DOMAIN-SET
-[filter_remote]
-DOMAIN-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.txt,REJECT
 ```
 <hr>
 
