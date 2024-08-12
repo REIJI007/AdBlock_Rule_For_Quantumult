@@ -15,7 +15,7 @@
     <img src="https://img.shields.io/github/license/REIJI007/AdBlock_Rule_For_Quantumult" alt="license" style="margin-right: 10px;">
 </p>
 
-**一、从多个广告过滤器中提取拦截域名条目，删除重复项，并将它们转换为兼容Quantumult的列表格式，其中列表的每一项都写成了Matcher Ruleset格式数组，一行仅一条规则，其中YAML文件是payload列表。该列表可以用作Quantumult的RULE-SET和DOMAIN-SET以阻止广告域名， powershell脚本每20分钟自动执行并将生成的文件发布在release中,下面是文件地址.**
+**一、从多个广告过滤器中提取拦截域名条目，删除重复项，并将它们转换为兼容Quantumult的列表格式，其中列表的每一项都写成了Matcher Ruleset格式数组，一行仅一条规则，其中YAML文件是payload列表。该列表可以用作Quantumult的拦截广告域名规则， powershell脚本每20分钟自动执行并将生成的文件发布在release中,下面是文件地址.**
 <hr>
 
 *1、适用于Quantumult的外部远程域名拦截list格式Matcher Ruleset列表 adblock_reject_quantumult.list* 
@@ -40,7 +40,7 @@
 <hr>
 
 ```conf
-#适用于Quantumult的外部本地拦截域名list格式规则集
+#适用于Quantumult的外部本地拦截域名list格式Matcher Ruleset列表
 [filter_local]
 file-path=C:\Users\YourUsername\Documents\file.list, tag=广告域名拦截, force-policy=reject, enabled=true  #你的外部本地拦截域名规则集文件保存路径
 ```
@@ -59,7 +59,7 @@ file-path=C:\Users\YourUsername\Documents\file.list, tag=广告域名拦截, for
 <hr>
 
 ```conf
-#适用于Quantumult的远程广告拦截域名规则列表
+#适用于Quantumult的远程广告拦截域名规则Matcher Ruleset列表
 [filter_remote]
 https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult.list, tag=广告拦截规则, force-policy=REJECT, update-interval=120, opt-parser=true, enabled=true
 ```
