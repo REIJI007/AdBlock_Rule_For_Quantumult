@@ -31,21 +31,21 @@ jobs:
     - name: Run adblock_rule_generator_quantumult_list.ps1  # 运行 adblock_rule_generator_quantumult_list.ps1 脚本
       run: pwsh -File ./adblock_rule_generator_quantumult_list.ps1  # 使用 PowerShell 7 运行脚本
 
-    - name: Check if adblock_reject_quantumult_ruleset.list exists in root directory  # 检查文件是否存在于根目录
+    - name: Check if adblock_reject_quantumult.list exists in root directory  # 检查文件是否存在于根目录
       run: |
-        if [ ! -f "./adblock_reject_quantumult_ruleset.list" ]; then
-          echo "File adblock_reject_quantumult_ruleset.list not found in the root directory!"
+        if [ ! -f "./adblock_reject_quantumult.list" ]; then
+          echo "File adblock_reject_quantumult.list not found in the root directory!"
           exit 1
         fi
 
-    - name: Force Add and Commit adblock_reject_quantumult_ruleset.list  # 强制添加并提交文件
+    - name: Force Add and Commit adblock_reject_quantumult.list  # 强制添加并提交文件
       run: |
         git config --global user.name 'github-actions'  # 配置提交用户名
         git config --global user.email 'github-actions@github.com'  # 配置提交邮箱
-        git add -f adblock_reject_quantumult_ruleset.list  # 强制添加文件
-        git commit -m 'Update adblock_reject_quantumult_ruleset.list' || git commit --allow-empty -m 'Empty commit to force push'  # 提交更改，若无更改则提交空更改
+        git add -f adblock_reject_quantumult.list  # 强制添加文件
+        git commit -m 'Update adblock_reject_quantumult.list' || git commit --allow-empty -m 'Empty commit to force push'  # 提交更改，若无更改则提交空更改
 
-    - name: Retry Push adblock_reject_quantumult_ruleset.list  # 推送文件，失败时重试
+    - name: Retry Push adblock_reject_quantumult.list  # 推送文件，失败时重试
       env:
         TOKEN: ${{ secrets.TOKEN }}  # 使用 GitHub 密钥进行身份验证
       run: |
