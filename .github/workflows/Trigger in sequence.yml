@@ -47,51 +47,9 @@ jobs:
           # 等待90秒
           sleep 90
 
-  # 触发 Run_AdBlock_Rule_Generator_quantumult_Txt 工作流
-  trigger_adblock_rule_generator_quantumult_txt:
-    needs: trigger_adblock_rule_generator_quantumult_list
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Trigger and verify Run_AdBlock_Rule_Generator_quantumult_Txt
-        env:
-          TOKEN: ${{ secrets.TOKEN }}
-        run: |
-          workflow_id="Run_AdBlock_Rule_Generator_quantumult_Txt.yml"
-          ref="main"
-          # 触发工作流
-          response=$(curl -X POST -H "Authorization: token $TOKEN" \
-            -H "Accept: application/vnd.github.v3+json" \
-            "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Quantumult/actions/workflows/$workflow_id/dispatches" \
-            -d "{\"ref\":\"$ref\"}")
-          echo "Triggered workflow $workflow_id: $response"
-
-          # 验证工作流成功触发和完成
-          while : ; do
-            status=$(curl -s -H "Authorization: token $TOKEN" \
-              -H "Accept: application/vnd.github.v3+json" \
-              "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Quantumult/actions/runs?workflow_id=$workflow_id&status=completed&branch=$ref" \
-              | jq -r '.workflow_runs[0].conclusion')
-
-            if [[ "$status" == "success" ]]; then
-              echo "Workflow $workflow_id completed successfully."
-              break
-            elif [[ "$status" == "failure" ]]; then
-              echo "Workflow $workflow_id failed."
-              exit 1
-            else
-              echo "Waiting for workflow $workflow_id to complete..."
-              sleep 30
-            fi
-          done
-
-          # 等待90秒
-          sleep 90
-
   # 触发 Convert_the_Ruleset_files_into_Domainset_files 工作流
   convert_ruleset_to_domainset:
-    needs: trigger_adblock_rule_generator_quantumult_txt
+    needs: trigger_adblock_rule_generator_quantumult_list
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
