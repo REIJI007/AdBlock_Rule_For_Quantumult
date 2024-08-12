@@ -40,9 +40,9 @@
 <hr>
 
 ```conf
-#适用于Quantumult的外部本地拦截广告域名list格式Matcher Ruleset列表
+# 适用于Quantumult的外部本地拦截广告域名list格式Matcher Ruleset列表
 [filter_local]
-file-path=C:\Users\YourUsername\Documents\file.list, tag=广告域名拦截, force-policy=reject, enabled=true  #你的外部本地拦截广告域名list格式Matcher Ruleset列表文件保存路径
+tag=adblock, file-path=C:\Users\YourUsername\Documents\file.list, force-policy=reject, enabled=true
 ```
 <hr>
 
