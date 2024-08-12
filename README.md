@@ -43,9 +43,9 @@
 
 
 ```conf
-#适用于Quantumult的外部本地拦截域名conf格式规则集
+#适用于Quantumult的外部本地拦截域名txt格式规则集
 [filter_local]
-file-path=C:\Users\YourUsername\Documents\file.conf, tag=广告域名拦截, force-policy=reject, enabled=true  #你的外部本地拦截域名规则集文件保存路径
+file-path=C:\Users\YourUsername\Documents\file.txt, tag=广告域名拦截, force-policy=reject, enabled=true  #你的外部本地拦截域名规则集文件保存路径
 
 ```
 ```conf
@@ -79,7 +79,16 @@ RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/
 [filter_remote]
 DOMAIN-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.list,REJECT
 ```
-
+```conf
+#适用于Quantumult的txt格式RULE-SET
+[filter_remote]
+RULE-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.txt,REJECT
+```
+```conf
+#适用于Quantumult的txt格式DOMAIN-SET
+[filter_remote]
+DOMAIN-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.txt,REJECT
+```
 <hr>
 
 **五、关于本仓库的使用效果为什么没有普通广告过滤器效果好的疑问解答：**
