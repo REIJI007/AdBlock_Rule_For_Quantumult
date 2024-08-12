@@ -52,3 +52,5 @@ jobs:
         for i in {1..5}; do  # 尝试最多5次
           git push --force origin HEAD && exit 0 || (echo "Push failed, retrying in 10 seconds..." && sleep 10)
         done
+        echo "Push failed after 5 attempts"  # 如果达到最大重试次数，输出失败信息
+        exit 1
