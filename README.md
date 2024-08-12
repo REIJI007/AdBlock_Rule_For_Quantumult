@@ -61,7 +61,7 @@ tag=adblock, file-path=C:\Users\YourUsername\Documents\file.list, force-policy=r
 ```conf
 # 适用于 Quantumult 的外部远程拦截广告域名规则 Matcher Ruleset 列表
 [filter_remote]
-adblock, https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult.list, interval=120, opt-parser=true, force-policy=REJECT, enabled=true
+https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult.list, tag=adblock, force-policy=REJECT, update-interval=120, opt-parser=true, enabled=true
 ```
 <hr>
 
