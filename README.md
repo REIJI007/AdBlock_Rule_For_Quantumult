@@ -64,13 +64,13 @@
 
 
 ```conf
-#适用于Quantumult的外部本地拦截域名规则集
+#适用于Quantumult的外部本地拦截域名conf格式规则集
 [filter_local]
 file-path=C:\Users\YourUsername\Documents\file.conf, tag=广告域名拦截, force-policy=reject, enabled=true  #你的外部本地拦截域名规则集文件保存路径
 
 ```
 ```conf
-#适用于Quantumult的外部本地拦截域名规则集
+#适用于Quantumult的外部本地拦截域名list格式规则集
 [filter_local]
 file-path=C:\Users\YourUsername\Documents\file.list, tag=广告域名拦截, force-policy=reject, enabled=true  #你的外部本地拦截域名规则集文件保存路径
 
@@ -104,7 +104,6 @@ DOMAIN-SET,https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumul
 
 <hr>
 <hr>
-
 
 
 ```conf
