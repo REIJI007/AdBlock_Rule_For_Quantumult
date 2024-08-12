@@ -15,7 +15,7 @@
     <img src="https://img.shields.io/github/license/REIJI007/AdBlock_Rule_For_Quantumult" alt="license" style="margin-right: 10px;">
 </p>
 
-**一、从多个广告过滤器中提取拦截域名条目，删除重复项，并将它们转换为兼容Quantumult的列表格式，其中列表的每一项都写成了Matcher Ruleset格式数组，一行仅一条规则，其中YAML文件是payload列表。该列表可以用作Quantumult的拦截广告域名规则， powershell脚本每20分钟自动执行并将生成的文件发布在release中,下面是文件地址.**
+**一、从多个广告过滤器中提取拦截域名条目，删除重复项，并将它们转换为兼容Quantumult的列表格式，其中列表的每一项都写成了Matcher Ruleset格式数组，一行仅一条规则。该列表可以用作Quantumult的拦截广告域名规则， powershell脚本每20分钟自动执行并将生成的文件发布在release中,下面是文件地址.**
 <hr>
 
 *1、适用于Quantumult的外部远程域名拦截list格式Matcher Ruleset列表 adblock_reject_quantumult.list* 
@@ -46,7 +46,7 @@ file-path=C:\Users\YourUsername\Documents\file.list, tag=广告域名拦截, for
 ```
 <hr>
 
-**三、本仓库引用多个广告过滤器，从这些广告过滤器中提取了被拦截条目的域名，剔除了非拦截项并去重，最后做成Matcher Ruleset列表，虽无法做到面面俱到但能减少广告带来的困扰，请自行斟酌考虑使用。碍于surge的路由行为且秉持着尽可能不误杀的原则，本仓库采取域名完全匹配策略，即匹配命中于拦截列表上的域名完全一致时触发拦截，除此之外的情况给予放行。尽管这会有许多漏网之鱼的广告被放行**
+**三、本仓库引用多个广告过滤器，从这些广告过滤器中提取了被拦截条目的域名，剔除了非拦截项并去重，最后做成Matcher Ruleset列表，虽无法做到面面俱到但能减少广告带来的困扰，请自行斟酌考虑使用。碍于Quantumult的路由行为且秉持着尽可能不误杀的原则，本仓库采取域名完全匹配策略，即匹配命中于拦截列表上的域名完全一致时触发拦截，除此之外的情况给予放行。尽管这会有许多漏网之鱼的广告被放行**
 <br>
 <br>
 **四、关于本仓库使用方式：**
