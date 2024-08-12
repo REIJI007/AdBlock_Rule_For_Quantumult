@@ -44,7 +44,7 @@ file-path=C:\Users\YourUsername\Documents\file.list, tag=广告域名拦截, for
 <br>
 **四、关于本仓库使用方式：**
 
-  *使用方式一：下载releases中的文件，编写Quantumult的配置中的[filter_local]字段，引用本地规则集作为域名拦截规则（需要手动下载更新）*
+  *使用方式一：下载releases中的adblock_reject_quantumult.txt文件的内容复制粘贴到配置文件的[filter_local]下*
 
 
   *使用方式二：将下面对应格式的配置文件中[filter_remote]字段内容添加到你的配置文件充当远程规则集，需要特别注意配置文件的缩进和对齐（同步本仓库的云端部署的远程规则集配置)*
