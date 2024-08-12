@@ -93,7 +93,7 @@ $($formattedRules -join "`n")
 "@
 
 # 定义输出文件路径
-$outputPath = "$PSScriptRoot/adblock_reject_quantumult_ruleset.list"
+$outputPath = "$PSScriptRoot/adblock_reject_quantumult.list"
 $textContent | Out-File -FilePath $outputPath -Encoding utf8
 
 # 输出生成的有效规则总数
