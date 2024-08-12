@@ -15,7 +15,7 @@
     <img src="https://img.shields.io/github/license/REIJI007/AdBlock_Rule_For_Quantumult" alt="license" style="margin-right: 10px;">
 </p>
 
-**一、从多个广告过滤器中提取拦截域名条目，删除重复项，并将它们转换为兼容Quantumult的列表格式，其中列表的每一项都写成了Matcher Ruleset格式数组，一行仅一条规则，其中YAML文件是payload列表。该列表可以用作Quantumult的RULE-SET和DOMAIN-SET以阻止广告域名， powershell脚本每20分钟自动执行并将生成的文件发布在release中,下面是九个规则集文件地址.**
+**一、从多个广告过滤器中提取拦截域名条目，删除重复项，并将它们转换为兼容Quantumult的列表格式，其中列表的每一项都写成了Matcher Ruleset格式数组，一行仅一条规则，其中YAML文件是payload列表。该列表可以用作Quantumult的RULE-SET和DOMAIN-SET以阻止广告域名， powershell脚本每20分钟自动执行并将生成的文件发布在release中,下面是五个规则集文件地址.**
 
 
 <hr>
@@ -33,21 +33,21 @@
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_ruleset.conf*
 <br>
 <br>
-*5、适用于Quantumult的外部远程域名LIST格式拦截RULE-SET规则集 adblock_reject_quantumult_ruleset.list* 
+*3、适用于Quantumult的外部远程域名LIST格式拦截RULE-SET规则集 adblock_reject_quantumult_ruleset.list* 
 <br>
 *https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_ruleset.list*
 <br>
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_ruleset.list*
 <br>
 <br>
-*6、适用于Quantumult的外部远程域名CONF格式拦截DOMAIN-SET规则集 adblock_reject_quantumult_ruleset.conf* 
+*4、适用于Quantumult的外部远程域名CONF格式拦截DOMAIN-SET规则集 adblock_reject_quantumult_ruleset.conf* 
 <br>
 *https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.conf*
 <br>
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult_domainset.conf*
 <br>
 <br>
-*9、适用于Quantumult的外部远程域名LIST格式拦截DOMAIN-SET规则集 adblock_reject_quantumult_ruleset.list* 
+*5、适用于Quantumult的外部远程域名LIST格式拦截DOMAIN-SET规则集 adblock_reject_quantumult_ruleset.list* 
 <br>
 *https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult_domainset.list*
 <br>
