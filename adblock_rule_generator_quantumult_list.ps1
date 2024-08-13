@@ -80,6 +80,9 @@ $formattedRules = $uniqueRules | Sort-Object | ForEach-Object {"DOMAIN,$_,REJECT
 # 统计生成的规则条目数量
 $ruleCount = $uniqueRules.Count
 
+# 获取当前时间（东八区时间，CST）
+$cstTime = (Get-Date).ToUniversalTime().AddHours(8).ToString("yyyy-MM-dd HH:mm:ss")
+
 # 创建文本格式的字符串
 $textContent = @"
 # Title: AdBlock_Rule_For_Quantumult_List
@@ -89,6 +92,7 @@ $textContent = @"
 # LICENSE2：https://github.com/REIJI007/AdBlock_Rule_For_Quantumult/blob/main/LICENSE-CC%20BY-NC-SA%204.0
 # Generated AdBlock rules
 # Total entries: $ruleCount
+# Generated at: $cstTime (CST)
 $($formattedRules -join "`n")
 "@
 
