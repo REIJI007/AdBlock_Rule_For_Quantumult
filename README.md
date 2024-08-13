@@ -33,7 +33,7 @@
 *https://cdn.jsdelivr.net/gh/REIJI007/AdBlock_Rule_For_Quantumult@main/adblock_reject_quantumult.txt*
 <hr>
 
-**二、理论上任何代理拦截域名且符合广告过滤器过滤语法的列表订阅URL都可加入此powershell脚本处理，请自行酌情添加过滤器订阅URL至脚本中进行处理，你可将该脚本代码复制到本地文本编辑器制作成.ps1后缀的文件运行在powershell上，注意修改生成的文件路径，最后在Quantumult的配置中实现调用本地生成的规则集文件，且Quantumult配置字段写成类似于如下例子**
+**二、理论上任何代理拦截域名且符合广告过滤器过滤语法的列表订阅URL都可加入此adblock_rule_generator_quantumult_list.ps1脚本处理，请自行酌情添加过滤器订阅URL至脚本中进行处理，你可将该脚本代码复制到本地文本编辑器制作成.ps1后缀的文件运行在powershell上，注意修改生成的文件路径，最后在Quantumult的配置中实现调用本地生成的规则集文件，且Quantumult配置字段写成类似于如下例子**
 <br>
 <br>
 *简而言之就是可以让你DIY出希望得到的拦截域名Matcher Ruleset列表，缺点是此做法只适合本地定制使用，当然你也可以像本仓库一样部署到GitHub上面，见仁见智*
