@@ -101,7 +101,7 @@ https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adbl
 
 12、HyperADRules (https://github.com/Lynricsy/HyperADRules)
 
-13、guandasheng (https://github.com/guandasheng/TheBestAdrules)
+13、guandasheng (https://github.com/guandasheng/adguardhome)
 
 ## License
 
