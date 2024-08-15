@@ -4,7 +4,7 @@
 <h1 align="center" style="font-size: 70px; margin-bottom: 20px;">AdBlock_Rule_For_Quantumult</h1>
 
 <!-- 居中的副标题 -->
-<h2 align="center" style="font-size: 30px; margin-bottom: 40px;">一个适用于Quantumult的广告域名拦截规则集,每20分钟更新一次</h2>
+<h2 align="center" style="font-size: 30px; margin-bottom: 40px;">适用于Quantumult的广告域名拦截规则,每20分钟更新一次</h2>
 
 <!-- 徽章（根据需要调整） -->
 <p align="center" style="margin-bottom: 40px;">
