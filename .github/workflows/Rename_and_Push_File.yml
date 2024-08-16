@@ -1,4 +1,4 @@
-name: Rename and Push
+name: Rename_and_Push_File
 
 # 允许手动触发
 on:
