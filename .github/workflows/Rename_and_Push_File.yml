@@ -1,40 +1,28 @@
-name: Rename_and_Push_File
+name: Rename_and_Push_file
 
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: '*/20 * * * *'  # 每20分钟触发一次
+  push:
+    branches:
+      - main
 
 jobs:
-  rename_and_push:
+  rename-and-push:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    - name: Check out the repository
+      uses: actions/checkout@v3
 
-      - name: Copy file with new extension
-        run: |
-          cp adblock_reject_quantumult.list adblock_reject_quantumult.txt
-          ls -l  # 列出当前目录中的文件以确认复制操作是否成功
+    - name: Copy and rename the file
+      run: cp adblock_reject_quantumult.list adblock_reject_quantumult.txt
 
-      - name: Commit and push changes
-        env:
-          TOKEN: ${{ secrets.TOKEN }}
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          git add adblock_reject_quantumult.txt
-          git status  # 查看当前的git状态
-          git commit -m "Copy adblock_reject_quantumult.list to adblock_reject_quantumult.txt" || echo "No changes to commit"
-          
-          # 拉取远程更改以确保与远程同步
-          git fetch origin main
-          git reset --hard origin/main
+    - name: Commit the new file
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git add adblock_reject_quantumult.txt
+        git commit -m "Add adblock_reject_quantumult.txt"
 
-          # 强制推送更改
-          git push --force "https://${TOKEN}@github.com/${{ github.repository }}.git" HEAD:main
-
-          # 输出git日志以确认提交是否成功推送
-          git log -n 10
+    - name: Force push changes
+      run: |
+        git push origin main --force
