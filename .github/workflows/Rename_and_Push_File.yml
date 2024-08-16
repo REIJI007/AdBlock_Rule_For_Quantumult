@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Rename file extension
+      - name: Copy file with new extension
         run: |
           cp adblock_reject_quantumult.list adblock_reject_quantumult.txt
           ls -l  # 列出当前目录中的文件以确认复制操作是否成功
@@ -27,8 +27,9 @@ jobs:
           
           git add adblock_reject_quantumult.txt
           git status  # 查看当前的git状态
-          git commit -m "Rename adblock_reject_quantumult.list to adblock_reject_quantumult.txt" || echo "No changes to commit"
+          git commit -m "Copy adblock_reject_quantumult.list to adblock_reject_quantumult.txt" || echo "No changes to commit"
           
+          # 拉取远程更改以确保与远程同步
           git fetch origin main
           git reset --hard origin/main
 
