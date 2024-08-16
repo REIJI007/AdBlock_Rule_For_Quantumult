@@ -1,9 +1,8 @@
-name: Rename_and_Push_file
+name: Rename and Push
 
+# 允许手动触发
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   rename-and-push:
