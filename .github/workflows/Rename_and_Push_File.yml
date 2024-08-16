@@ -15,7 +15,7 @@ jobs:
 
       - name: Rename file extension
         run: |
-          mv adblock_reject_quantumult.list adblock_reject_quantumult.txt
+          cp adblock_reject_quantumult.list adblock_reject_quantumult.txt
 
       - name: Commit and push changes
         env:
@@ -26,8 +26,8 @@ jobs:
           
           git add adblock_reject_quantumult.txt
           git commit -m "Rename adblock_reject_quantumult.list to adblock_reject_quantumult.txt" || echo "No changes to commit"
-          
-          # 拉取远程更改以确保与远程同步，但忽略冲突，因为我们要强制推送
+
+          # 拉取远程更改以确保与远程同步
           git fetch origin main
           git reset --hard origin/main
 
