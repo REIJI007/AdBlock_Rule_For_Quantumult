@@ -25,7 +25,11 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
           git add adblock_reject_quantumult.txt
-          git commit -m "Rename adblock_reject_quantumult.list to adblock_reject_quantumult.txt"
+          git commit -m "Rename adblock_reject_quantumult.list to adblock_reject_quantumult.txt" || echo "No changes to commit"
           
+          # 拉取远程更改以确保与远程同步，但忽略冲突，因为我们要强制推送
+          git fetch origin main
+          git reset --hard origin/main
+
           # 强制推送更改
           git push --force "https://${TOKEN}@github.com/${{ github.repository }}.git" HEAD:main
