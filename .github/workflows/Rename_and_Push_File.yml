@@ -1,6 +1,5 @@
 name: Rename_and_Push_File
 
-# 允许手动触发
 on:
   workflow_dispatch:
 
@@ -12,15 +11,15 @@ jobs:
     - name: Check out the repository
       uses: actions/checkout@v3
 
-    - name: Copy and rename the file
-      run: cp adblock_reject_quantumult.list adblock_reject_quantumult.txt
+    - name: Copy and rename the file (overwrite if exists)
+      run: cp -f adblock_reject_quantumult.list adblock_reject_quantumult.txt
 
     - name: Commit the new file
       run: |
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
         git add adblock_reject_quantumult.txt
-        git commit -m "Add adblock_reject_quantumult.txt"
+        git commit -m "Add or update adblock_reject_quantumult.txt" || echo "No changes to commit"
 
     - name: Force push changes
       run: |
