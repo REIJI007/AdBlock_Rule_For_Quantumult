@@ -34,14 +34,18 @@ jobs:
       - name: Update timestamp file
         run: echo "${{ env.time }}" > timestamp.txt  # 将时间写入 timestamp.txt 文件
 
-      # 步骤5：添加、提交并推送更改（即使没有实际更改）
+      # 步骤5：添加、提交并推送更改（确保成功提交）
       - name: Force add and commit changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add -A
-          git commit -m "Forced update of adblock files and timestamp"
-          git push origin main --force  # 强制推送到 main 分支
+          if git diff-index --quiet HEAD; then
+            echo "No changes to commit."
+          else
+            git commit -m "Forced update of adblock files and timestamp"
+            git push origin main --force  # 强制推送到 main 分支
+          fi
         env:
           TOKEN: ${{ secrets.TOKEN }}  # 使用存储在仓库密钥中的 TOKEN
 
