@@ -19,14 +19,31 @@ jobs:
           
           echo "Triggering workflow at $url"
 
-          response=$(curl -X POST -H "Authorization: token $TOKEN" \
-            -H "Accept: application/vnd.github.v3+json" \
-            "$url" \
-            -d "{\"ref\":\"$ref\"}")
-          echo "Triggered workflow $workflow_id: $response"
+          max_retries=5
+          for ((i=0; i<max_retries; i++)); do
+            response=$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Authorization: token $TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              "$url" \
+              -d "{\"ref\":\"$ref\"}")
+            
+            if [[ "$response" == "204" ]]; then
+              echo "Successfully triggered workflow $workflow_id"
+              break
+            else
+              echo "Failed to trigger workflow $workflow_id, attempt $((i+1))/$max_retries"
+              sleep 10
+            fi
+
+            if [[ $i -eq $((max_retries-1)) ]]; then
+              echo "Failed to trigger workflow after $max_retries attempts."
+              exit 1
+            fi
+          done
 
           # 验证工作流成功触发
-          while : ; do
+          retries=0
+          max_retries=20  # 最大重试次数
+          while [[ $retries -lt $max_retries ]]; do
             status=$(curl -s -H "Authorization: token $TOKEN" \
               -H "Accept: application/vnd.github.v3+json" \
               "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Quantumult/actions/runs?workflow_id=$workflow_id&status=completed&branch=$ref" \
@@ -39,8 +56,14 @@ jobs:
               echo "Workflow $workflow_id failed."
               exit 1
             else
-              echo "Waiting for workflow $workflow_id to complete..."
+              echo "Waiting for workflow $workflow_id to complete... ($((retries+1))/$max_retries)"
+              retries=$((retries+1))
               sleep 30
+            fi
+
+            if [[ $retries -eq $max_retries ]]; then
+              echo "Workflow did not complete successfully after $max_retries attempts."
+              exit 1
             fi
           done
 
@@ -62,14 +85,31 @@ jobs:
           
           echo "Triggering workflow at $url"
 
-          response=$(curl -X POST -H "Authorization: token $TOKEN" \
-            -H "Accept: application/vnd.github.v3+json" \
-            "$url" \
-            -d "{\"ref\":\"$ref\"}")
-          echo "Triggered workflow $workflow_id: $response"
+          max_retries=5
+          for ((i=0; i<max_retries; i++)); do
+            response=$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Authorization: token $TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              "$url" \
+              -d "{\"ref\":\"$ref\"}")
+            
+            if [[ "$response" == "204" ]]; then
+              echo "Successfully triggered workflow $workflow_id"
+              break
+            else
+              echo "Failed to trigger workflow $workflow_id, attempt $((i+1))/$max_retries"
+              sleep 10
+            fi
+
+            if [[ $i -eq $((max_retries-1)) ]]; then
+              echo "Failed to trigger workflow after $max_retries attempts."
+              exit 1
+            fi
+          done
 
           # 验证工作流成功触发
-          while : ; do
+          retries=0
+          max_retries=20
+          while [[ $retries -lt $max_retries ]]; do
             status=$(curl -s -H "Authorization: token $TOKEN" \
               -H "Accept: application/vnd.github.v3+json" \
               "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Quantumult/actions/runs?workflow_id=$workflow_id&status=completed&branch=$ref" \
@@ -82,8 +122,14 @@ jobs:
               echo "Workflow $workflow_id failed."
               exit 1
             else
-              echo "Waiting for workflow $workflow_id to complete..."
+              echo "Waiting for workflow $workflow_id to complete... ($((retries+1))/$max_retries)"
+              retries=$((retries+1))
               sleep 30
+            fi
+
+            if [[ $retries -eq $max_retries ]]; then
+              echo "Workflow did not complete successfully after $max_retries attempts."
+              exit 1
             fi
           done
 
@@ -105,14 +151,31 @@ jobs:
           
           echo "Triggering workflow at $url"
 
-          response=$(curl -X POST -H "Authorization: token $TOKEN" \
-            -H "Accept: application/vnd.github.v3+json" \
-            "$url" \
-            -d "{\"ref\":\"$ref\"}")
-          echo "Triggered workflow $workflow_id: $response"
+          max_retries=5
+          for ((i=0; i<max_retries; i++)); do
+            response=$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Authorization: token $TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              "$url" \
+              -d "{\"ref\":\"$ref\"}")
+            
+            if [[ "$response" == "204" ]]; then
+              echo "Successfully triggered workflow $workflow_id"
+              break
+            else
+              echo "Failed to trigger workflow $workflow_id, attempt $((i+1))/$max_retries"
+              sleep 10
+            fi
+
+            if [[ $i -eq $((max_retries-1)) ]]; then
+              echo "Failed to trigger workflow after $max_retries attempts."
+              exit 1
+            fi
+          done
 
           # 验证工作流成功触发
-          while : ; do
+          retries=0
+          max_retries=20
+          while [[ $retries -lt $max_retries ]]; do
             status=$(curl -s -H "Authorization: token $TOKEN" \
               -H "Accept: application/vnd.github.v3+json" \
               "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Quantumult/actions/runs?workflow_id=$workflow_id&status=completed&branch=$ref" \
@@ -125,11 +188,17 @@ jobs:
               echo "Workflow $workflow_id failed."
               exit 1
             else
-              echo "Waiting for workflow $workflow_id to complete..."
+              echo "Waiting for workflow $workflow_id to complete... ($((retries+1))/$max_retries)"
+              retries=$((retries+1))
               sleep 30
+            fi
+
+            if [[ $retries -eq $max_retries ]]; then
+              echo "Workflow did not complete successfully after $max_retries attempts."
+              exit 1
             fi
           done
 
-          # 你可以选择是否在最后一个工作流后再等待
+          # 可选择是否在最后一个工作流后等待
           # echo "Waiting for 90 seconds before ending the process..."
           # sleep 90
