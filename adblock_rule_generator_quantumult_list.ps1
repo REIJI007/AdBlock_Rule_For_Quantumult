@@ -105,6 +105,7 @@ $textContent = @"
 # Generated AdBlock rules
 # Total entries: $ruleCount
 # Generated at: $cstTime (CST)
+
 $($formattedRules -join "`n")
 "@
 
