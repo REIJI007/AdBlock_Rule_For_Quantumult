@@ -100,8 +100,6 @@ https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adbl
 
 12、HyperADRules (https://github.com/Lynricsy/HyperADRules)
 
-13、guandasheng (https://github.com/guandasheng/adguardhome)
-
 ## LICENSE
 - [CC-BY-SA-4.0 License](https://github.com/REIJI007/AdBlock_Rule_For_Quantumult/blob/main/LICENSE-CC%20BY-NC-SA%204.0)
 - [GPL-3.0 License](https://github.com/REIJI007/AdBlock_Rule_For_Quantumult/blob/main/LICENSE-GPL3.0)
