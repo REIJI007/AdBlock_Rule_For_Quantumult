@@ -71,7 +71,7 @@ https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adbl
 <br>
 <br>
 
-**六、本仓库引用的广告过滤规则来源请查看Referencing rule sources.txt，后续考虑添加更多上游规则列表进行处理整合（目前32个来源）。至于是否误杀域名完全取决于这些处于上游的广告过滤器的域名拦截行为，若不满意的话可按照第二条使用adblock_rule_generator_quantumult_list.ps1脚本进行DIY本地定制化，亦或可以像本仓库一样DIY定制后部署到github上面，或者fork本仓库自行DIY**
+**六、本仓库引用的广告过滤规则来源请查看Referencing rule sources.txt，后续考虑添加更多上游规则列表进行处理整合（目前34个来源）。至于是否误杀域名完全取决于这些处于上游的广告过滤器的域名拦截行为，若不满意的话可按照第二条使用adblock_rule_generator_quantumult_list.ps1脚本进行DIY本地定制化，亦或可以像本仓库一样DIY定制后部署到github上面，或者fork本仓库自行DIY**
 <br>
 
 **七、特别鸣谢**
@@ -99,6 +99,8 @@ https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adbl
 11、ADguardTeam (https://github.com/AdguardTeam/AdGuardFilters)
 
 12、HyperADRules (https://github.com/Lynricsy/HyperADRules)
+
+13、xinggsf <br>(https://github.com/xinggsf/Adblock-Plus-Rule)
 
 ## LICENSE
 - [CC-BY-SA-4.0 License](https://github.com/REIJI007/AdBlock_Rule_For_Quantumult/blob/main/LICENSE-CC%20BY-NC-SA%204.0)
