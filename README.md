@@ -42,7 +42,7 @@
 # 适用于Quantumult的本地广告域名拦截规则
 [filter_local]
 # 广告域名拦截规则文件路径
-DOMAIN-SET,/path/to/your/file.list,REJECT
+RULE-SET,/path/to/your/file.list,REJECT
 ```
 <hr>
 
@@ -59,7 +59,7 @@ DOMAIN-SET,/path/to/your/file.list,REJECT
 <hr>
 
 ```conf
-# 适用于 Quantumult 的外部远程拦截广告域名规则 Matcher Ruleset 列表
+# 适用于 Quantumult 的外部远程拦截广告域名规则
 [filter_remote]
 https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult.list, tag=adblock, force-policy=REJECT, update-interval=120, opt-parser=false, enabled=true
 ```
