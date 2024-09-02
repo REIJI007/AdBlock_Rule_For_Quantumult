@@ -13,18 +13,22 @@ jobs:
 
       - name: List and delete all releases (with pagination)
         run: |
-          # 初始化页码和release ID列表
+          # 初始化页码和 release ID 列表
           page=1
           releases=""
 
-          # 获取所有分页中的release ID
+          # 获取所有分页中的 release ID
           while true; do
             echo "Fetching page $page..."
             response=$(curl -s -H "Authorization: token ${{ secrets.TOKEN }}" \
               "https://api.github.com/repos/${{ github.repository }}/releases?per_page=100&page=$page")
 
-            # 检查 API 调用是否成功
-            if [ "$(echo "$response" | jq -r '.[0]')" == "null" ]; then
+            # 打印响应以帮助调试
+            echo "Response: $response"
+
+            # 检查 API 响应是否为空或为错误
+            if [ "$(echo "$response" | jq -r '. | type')" != "array" ]; then
+              echo "Unexpected response type or empty response. Exiting."
               break
             fi
 
