@@ -23,6 +23,9 @@ jobs:
             response=$(curl -s -H "Authorization: token ${{ secrets.TOKEN }}" \
               "https://api.github.com/repos/${{ github.repository }}/releases?per_page=100&page=$page")
 
+            # 打印完整的响应内容以帮助调试
+            echo "Response: $response"
+
             # 检查 API 响应是否为数组（确保没有错误或空响应）
             if [ "$(echo "$response" | jq -r 'type')" != "array" ] || [ "$(echo "$response" | jq -r '. | length')" -eq 0 ]; then
               echo "No more releases found or unexpected response. Exiting."
