@@ -19,13 +19,17 @@ jobs:
 
           # 获取所有分页中的release ID
           while true; do
-            result=$(curl -s -H "Authorization: token ${{ secrets.TOKEN }}" \
-              "https://api.github.com/repos/${{ github.repository }}/releases?per_page=100&page=$page" | jq -r '.[].id')
+            echo "Fetching page $page..."
+            response=$(curl -s -H "Authorization: token ${{ secrets.TOKEN }}" \
+              "https://api.github.com/repos/${{ github.repository }}/releases?per_page=100&page=$page")
 
-            if [ -z "$result" ]; then
+            # 检查 API 调用是否成功
+            if [ "$(echo "$response" | jq -r '.[0]')" == "null" ]; then
               break
             fi
 
+            # 追加当前页面的 release ID
+            result=$(echo "$response" | jq -r '.[].id')
             releases="$releases $result"
             page=$((page + 1))
           done
@@ -38,9 +42,11 @@ jobs:
 
           # 删除每个 release
           for id in $releases; do
-            echo "Deleting release ID: $id"
-            curl -s -X DELETE -H "Authorization: token ${{ secrets.TOKEN }}" \
-            "https://api.github.com/repos/${{ github.repository }}/releases/$id"
+            if [ -n "$id" ]; then
+              echo "Deleting release ID: $id"
+              curl -s -X DELETE -H "Authorization: token ${{ secrets.TOKEN }}" \
+              "https://api.github.com/repos/${{ github.repository }}/releases/$id"
+            fi
           done
 
           echo "All releases deleted."
