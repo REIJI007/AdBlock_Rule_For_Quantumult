@@ -137,19 +137,19 @@ foreach ($url in $urlList) {
             # 排除白名单规则，并匹配所有的URL路径过滤规则
             if ($line -notmatch '^@@' -and $line -match '^\|\|([^\^]+)\^$') {
                 $urlRule = $Matches[1]
-                $uniqueRules.Add("http://$urlRule") | Out-Null
+                $uniqueRules.Add("^https?://$urlRule/.*$") | Out-Null
             }
             elseif ($line -notmatch '^@@' -and $line -match '^\|([^\^]+)\^$') {
                 $urlRule = $Matches[1]
-                $uniqueRules.Add("http://$urlRule") | Out-Null
+                $uniqueRules.Add("^https?://$urlRule/.*$") | Out-Null
             }
             elseif ($line -notmatch '^@@' -and $line -match '^\|([^\^]+)\|$') {
                 $urlRule = $Matches[1]
-                $uniqueRules.Add("http://$urlRule") | Out-Null
+                $uniqueRules.Add("^https?://$urlRule$") | Out-Null
             }
             elseif ($line -notmatch '^@@' -and $line -match '^/([^\^]+)/$') {
                 $urlRule = $Matches[1]
-                $uniqueRules.Add("http://$urlRule") | Out-Null
+                $uniqueRules.Add("^https?://.*/$urlRule/.*$") | Out-Null
             }
         }
     } catch {
@@ -159,7 +159,7 @@ foreach ($url in $urlList) {
 }
 
 # 将URL规则转换为Quantumult URL Rewrite规则格式
-$formattedRules = $uniqueRules | Sort-Object | ForEach-Object { "$_ - reject" }
+$formattedRules = $uniqueRules | Sort-Object | ForEach-Object { "$_ url reject" }
 
 # 统计生成的规则条目数量
 $ruleCount = $formattedRules.Count
@@ -178,7 +178,7 @@ $textContent = @"
 # Generated AdBlock rules
 # Total entries: $ruleCount
 
-[URL Rewrite]
+[rewrite_remote]
 $($formattedRules -join "`n")
 "@
 
