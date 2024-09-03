@@ -38,11 +38,22 @@ jobs:
           exit 1
         fi
 
+    - name: Install Git LFS  # 安装 Git LFS
+      run: |
+        sudo apt-get install git-lfs
+        git lfs install
+
+    - name: Track adblock_reject_url_rewrite.list with Git LFS  # 使用 Git LFS 追踪大文件
+      run: |
+        git lfs track "adblock_reject_url_rewrite.list"
+        git add .gitattributes  # 添加 LFS 配置文件到 Git
+        git commit -m "Add adblock_reject_url_rewrite.list to Git LFS"
+
     - name: Force Add and Commit adblock_reject_url_rewrite.list  # 强制添加并提交文件
       run: |
         git config --global user.name 'github-actions'  # 配置提交用户名
         git config --global user.email 'github-actions@github.com'  # 配置提交邮箱
-        git add -f adblock_reject_url_rewrite.list  # 强制添加文件
+        git add adblock_reject_url_rewrite.list  # 添加文件到 Git
         git commit -m 'Update adblock_reject_url_rewrite.list' || git commit --allow-empty -m 'Empty commit to force push'  # 提交更改，若无更改则提交空更改
 
     - name: Retry Push adblock_reject_url_rewrite.list  # 推送文件，失败时重试
