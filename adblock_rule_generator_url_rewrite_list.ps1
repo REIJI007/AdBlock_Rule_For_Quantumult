@@ -164,7 +164,6 @@ $generationTime = (Get-Date).ToUniversalTime().AddHours(8).ToString("yyyy-MM-dd 
 
 # 创建文本格式的字符串
 $textContent = @"
-[URL Rewrite]
 # Title: AdBlock_Rule_For_Quantumult
 # Description: 适用于Quantumult的URL重写规则集，每20分钟更新一次，确保即时同步上游减少误杀
 # Homepage: https://github.com/REIJI007/AdBlock_Rule_For_Quantumult
@@ -175,6 +174,7 @@ $textContent = @"
 # Total entries: $ruleCount
 
 $($formattedRules -join "`n")
+[URL Rewrite]
 "@
 
 # 定义输出文件路径
