@@ -134,12 +134,23 @@ foreach ($url in $urlList) {
         $lines = $content -split "`n"
 
         foreach ($line in $lines) {
-            # 匹配所有的URL过滤规则并提取
-            if ($line -match '^\|\|([^\^]+)\^$') {
+            # 排除白名单规则，并匹配所有的URL路径过滤规则
+            if ($line -notmatch '^@@' -and $line -match '^\|\|([^\^]+)\^$') {
                 $urlRule = $Matches[1]
-                $uniqueRules.Add($urlRule) | Out-Null
+                $uniqueRules.Add("http://$urlRule") | Out-Null
             }
-            # 也可以增加其他格式的URL过滤规则的匹配
+            elseif ($line -notmatch '^@@' -and $line -match '^\|([^\^]+)\^$') {
+                $urlRule = $Matches[1]
+                $uniqueRules.Add("http://$urlRule") | Out-Null
+            }
+            elseif ($line -notmatch '^@@' -and $line -match '^\|([^\^]+)\|$') {
+                $urlRule = $Matches[1]
+                $uniqueRules.Add("http://$urlRule") | Out-Null
+            }
+            elseif ($line -notmatch '^@@' -and $line -match '^/([^\^]+)/$') {
+                $urlRule = $Matches[1]
+                $uniqueRules.Add("http://$urlRule") | Out-Null
+            }
         }
     } catch {
         Write-Host "处理 $url 时出错: $_"
@@ -148,7 +159,7 @@ foreach ($url in $urlList) {
 }
 
 # 将URL规则转换为Quantumult URL Rewrite规则格式
-$formattedRules = $uniqueRules | Sort-Object | ForEach-Object { "http://$_ - reject" }
+$formattedRules = $uniqueRules | Sort-Object | ForEach-Object { "$_ - reject" }
 
 # 统计生成的规则条目数量
 $ruleCount = $formattedRules.Count
@@ -161,17 +172,15 @@ $textContent = @"
 # Title: AdBlock_Rule_For_Quantumult
 # Description: 适用于Quantumult的URL重写规则集，每20分钟更新一次，确保即时同步上游减少误杀
 # Homepage: https://github.com/REIJI007/AdBlock_Rule_For_Quantumult
-# LICENSE1：https://github.com/REIJI007/AdBlock_Rule_For_Quantumult/blob/main/LICENSE-GPL3.0
-# LICENSE2：https://github.com/REIJI007/AdBlock_Rule_For_Quantumult/blob/main/LICENSE-CC%20BY-NC-SA%204.0
+# LICENSE1: https://github.com/REIJI007/AdBlock_Rule_For_Quantumult/blob/main/LICENSE-GPL3.0
+# LICENSE2: https://github.com/REIJI007/AdBlock_Rule_For_Quantumult/blob/main/LICENSE-CC%20BY-NC-SA%204.0
 # Generated on: $generationTime
 # Generated AdBlock rules
 # Total entries: $ruleCount
 
-
 [URL Rewrite]
 $($formattedRules -join "`n")
 "@
-
 
 # 定义输出文件路径
 $outputPath = "$PSScriptRoot/adblock_reject_quantumult.txt"
