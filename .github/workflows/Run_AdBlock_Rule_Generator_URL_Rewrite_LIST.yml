@@ -1,4 +1,4 @@
-name: Run_AdBlock_Rule_Generator_LIST  # 工作流名称
+name: Run_AdBlock_Rule_Generator_URL_Rewrite_LIST  # 工作流名称
 
 on:
   schedule:
