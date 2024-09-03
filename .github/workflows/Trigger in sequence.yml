@@ -6,47 +6,29 @@ on:
     - cron: '*/20 * * * *'  # 每20分钟触发一次
 
 jobs:
-  trigger_quantumult_list:
+  trigger_adblock_rule_generator_quantumult_list:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Run_AdBlock_Rule_Generator_quantumult_List
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Trigger and verify Run_AdBlock_Rule_Generator_quantumult_List.yml
         env:
           TOKEN: ${{ secrets.TOKEN }}
         run: |
           workflow_id="Run_AdBlock_Rule_Generator_quantumult_List.yml"
           ref="main"
-          url="https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Quantumult/actions/workflows/$workflow_id/dispatches"
-          
-          echo "Triggering workflow at $url"
+          # 触发工作流
+          response=$(curl -X POST -H "Authorization: token $TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_quantumult/actions/workflows/$workflow_id/dispatches" \
+            -d "{\"ref\":\"$ref\"}")
+          echo "Triggered workflow $workflow_id: $response"
 
-          max_retries=5
-          for ((i=0; i<max_retries; i++)); do
-            response=$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Authorization: token $TOKEN" \
-              -H "Accept: application/vnd.github.v3+json" \
-              "$url" \
-              -d "{\"ref\":\"$ref\"}")
-            
-            if [[ "$response" == "204" ]]; then
-              echo "Successfully triggered workflow $workflow_id"
-              break
-            else
-              echo "Failed to trigger workflow $workflow_id, attempt $((i+1))/$max_retries"
-              sleep 10
-            fi
-
-            if [[ $i -eq $((max_retries-1)) ]]; then
-              echo "Failed to trigger workflow after $max_retries attempts."
-              exit 1
-            fi
-          done
-
-          # 验证工作流成功触发
-          retries=0
-          max_retries=20  # 最大重试次数
-          while [[ $retries -lt $max_retries ]]; do
+          # 验证工作流成功触发和完成
+          while : ; do
             status=$(curl -s -H "Authorization: token $TOKEN" \
               -H "Accept: application/vnd.github.v3+json" \
-              "https://api.github.com/repos/REI007/AdBlock_Rule_For_Quantumult/actions/runs?workflow_id=$workflow_id&status=completed&branch=$ref" \
+              "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_quantumult/actions/runs?status=completed&branch=$ref" \
               | jq -r '.workflow_runs[0].conclusion')
 
             if [[ "$status" == "success" ]]; then
@@ -56,14 +38,8 @@ jobs:
               echo "Workflow $workflow_id failed."
               exit 1
             else
-              echo "Waiting for workflow $workflow_id to complete... ($((retries+1))/$max_retries)"
-              retries=$((retries+1))
+              echo "Waiting for workflow $workflow_id to complete..."
               sleep 30
-            fi
-
-            if [[ $retries -eq $max_retries ]]; then
-              echo "Workflow did not complete successfully after $max_retries attempts."
-              exit 1
             fi
           done
 
@@ -71,48 +47,30 @@ jobs:
           echo "Waiting for 90 seconds before starting the next workflow..."
           sleep 90
 
-  trigger_rename_and_push:
+  trigger_rename_and_push_file:
+    needs: trigger_adblock_rule_generator_quantumult_list
     runs-on: ubuntu-latest
-    needs: trigger_quantumult_list
     steps:
-      - name: Trigger Rename_and_Push_File
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Trigger and verify Rename_and_Push_File.yml
         env:
           TOKEN: ${{ secrets.TOKEN }}
         run: |
           workflow_id="Rename_and_Push_File.yml"
           ref="main"
-          url="https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Quantumult/actions/workflows/$workflow_id/dispatches"
-          
-          echo "Triggering workflow at $url"
+          # 触发工作流
+          response=$(curl -X POST -H "Authorization: token $TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_quantumult/actions/workflows/$workflow_id/dispatches" \
+            -d "{\"ref\":\"$ref\"}")
+          echo "Triggered workflow $workflow_id: $response"
 
-          max_retries=5
-          for ((i=0; i<max_retries; i++)); do
-            response=$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Authorization: token $TOKEN" \
-              -H "Accept: application/vnd.github.v3+json" \
-              "$url" \
-              -d "{\"ref\":\"$ref\"}")
-            
-            if [[ "$response" == "204" ]]; then
-              echo "Successfully triggered workflow $workflow_id"
-              break
-            else
-              echo "Failed to trigger workflow $workflow_id, attempt $((i+1))/$max_retries"
-              sleep 10
-            fi
-
-            if [[ $i -eq $((max_retries-1)) ]]; then
-              echo "Failed to trigger workflow after $max_retries attempts."
-              exit 1
-            fi
-          done
-
-          # 验证工作流成功触发
-          retries=0
-          max_retries=20  # 最大重试次数
-          while [[ $retries -lt $max_retries ]]; do
+          # 验证工作流成功触发和完成
+          while : ; do
             status=$(curl -s -H "Authorization: token $TOKEN" \
               -H "Accept: application/vnd.github.v3+json" \
-              "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Quantumult/actions/runs?workflow_id=$workflow_id&status=completed&branch=$ref" \
+              "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_quantumult/actions/runs?status=completed&branch=$ref" \
               | jq -r '.workflow_runs[0].conclusion')
 
             if [[ "$status" == "success" ]]; then
@@ -122,14 +80,8 @@ jobs:
               echo "Workflow $workflow_id failed."
               exit 1
             else
-              echo "Waiting for workflow $workflow_id to complete... ($((retries+1))/$max_retries)"
-              retries=$((retries+1))
+              echo "Waiting for workflow $workflow_id to complete..."
               sleep 30
-            fi
-
-            if [[ $retries -eq $max_retries ]]; then
-              echo "Workflow did not complete successfully after $max_retries attempts."
-              exit 1
             fi
           done
 
@@ -138,47 +90,29 @@ jobs:
           sleep 90
 
   trigger_release_adblock_files:
+    needs: trigger_rename_and_push_file
     runs-on: ubuntu-latest
-    needs: trigger_rename_and_push
     steps:
-      - name: Trigger Release_ADblock_Files
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Trigger and verify Release_ADblock_Files.yml
         env:
           TOKEN: ${{ secrets.TOKEN }}
         run: |
           workflow_id="Release_ADblock_Files.yml"
           ref="main"
-          url="https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Quantumult/actions/workflows/$workflow_id/dispatches"
-          
-          echo "Triggering workflow at $url"
+          # 触发工作流
+          response=$(curl -X POST -H "Authorization: token $TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_quantumult/actions/workflows/$workflow_id/dispatches" \
+            -d "{\"ref\":\"$ref\"}")
+          echo "Triggered workflow $workflow_id: $response"
 
-          max_retries=5
-          for ((i=0; i<max_retries; i++)); do
-            response=$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Authorization: token $TOKEN" \
-              -H "Accept: application/vnd.github.v3+json" \
-              "$url" \
-              -d "{\"ref\":\"$ref\"}")
-            
-            if [[ "$response" == "204" ]]; then
-              echo "Successfully triggered workflow $workflow_id"
-              break
-            else
-              echo "Failed to trigger workflow $workflow_id, attempt $((i+1))/$max_retries"
-              sleep 10
-            fi
-
-            if [[ $i -eq $((max_retries-1)) ]]; then
-              echo "Failed to trigger workflow after $max_retries attempts."
-              exit 1
-            fi
-          done
-
-          # 验证工作流成功触发
-          retries=0
-          max_retries=20  # 最大重试次数
-          while [[ $retries -lt $max_retries ]]; do
+          # 验证工作流成功触发和完成
+          while : ; do
             status=$(curl -s -H "Authorization: token $TOKEN" \
               -H "Accept: application/vnd.github.v3+json" \
-              "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Quantumult/actions/runs?workflow_id=$workflow_id&status=completed&branch=$ref" \
+              "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_quantumult/actions/runs?status=completed&branch=$ref" \
               | jq -r '.workflow_runs[0].conclusion')
 
             if [[ "$status" == "success" ]]; then
@@ -188,13 +122,7 @@ jobs:
               echo "Workflow $workflow_id failed."
               exit 1
             else
-              echo "Waiting for workflow $workflow_id to complete... ($((retries+1))/$max_retries)"
-              retries=$((retries+1))
+              echo "Waiting for workflow $workflow_id to complete..."
               sleep 30
-            fi
-
-            if [[ $retries -eq $max_retries ]]; then
-              echo "Workflow did not complete successfully after $max_retries attempts."
-              exit 1
             fi
           done
