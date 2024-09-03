@@ -52,7 +52,7 @@ jobs:
       run: |
         git lfs track "adblock_reject_url_rewrite.list"
         git add .gitattributes  # 添加 LFS 配置文件到 Git
-        git commit -m "Add adblock_reject_url_rewrite.list to Git LFS"
+        git commit -m "Add adblock_reject_url_rewrite.list to Git LFS" || echo "No changes to commit for .gitattributes"
 
     - name: Force Add and Commit adblock_reject_url_rewrite.list  # 强制添加并提交文件
       run: |
