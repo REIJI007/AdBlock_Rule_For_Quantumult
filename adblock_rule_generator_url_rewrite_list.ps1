@@ -119,9 +119,8 @@ $urlList = @(
 # 日志文件路径
 $logFilePath = "$PSScriptRoot/adblock_log.txt"
 
-# 创建两个HashSet来存储唯一的规则和排除的域名
+# 创建HashSet来存储唯一的URL规则
 $uniqueRules = [System.Collections.Generic.HashSet[string]]::new()
-$excludedDomains = [System.Collections.Generic.HashSet[string]]::new()
 
 # 创建WebClient对象用于下载规则
 $webClient = New-Object System.Net.WebClient
@@ -130,34 +129,29 @@ $webClient.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
 foreach ($url in $urlList) {
     Write-Host "正在处理: $url"
     Add-Content -Path $logFilePath -Value "正在处理: $url"
-    try 
-    {
+    try {
         $content = $webClient.DownloadString($url)
         $lines = $content -split "`n"
 
-        foreach ($line in $lines) 
-        {
-            # 过滤掉白名单规则
-            if ($line -notmatch '^@@\|\|' -and $line -match '^\|\|([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\^$') {
-                $domain = $Matches[1]
-                $uniqueRules.Add($domain) | Out-Null
+        foreach ($line in $lines) {
+            # 匹配所有的URL过滤规则并提取
+            if ($line -match '^\|\|([^\^]+)\^$') {
+                $urlRule = $Matches[1]
+                $uniqueRules.Add($urlRule) | Out-Null
             }
+            # 也可以增加其他格式的URL过滤规则的匹配
         }
-    }
-    catch {
+    } catch {
         Write-Host "处理 $url 时出错: $_"
         Add-Content -Path $logFilePath -Value "处理 $url 时出错: $_"
     }
 }
 
-# 排除白名单规则中的域名
-$finalRules = $uniqueRules | Where-Object { -not $excludedDomains.Contains($_) }
-
-# 格式化为 Quantumult 的 URL 重写规则
-$formattedRules = $finalRules | Sort-Object | ForEach-Object {"^https?://$_.*/.* - reject"}
+# 将URL规则转换为Quantumult URL Rewrite规则格式
+$formattedRules = $uniqueRules | Sort-Object | ForEach-Object { "http://$_ - reject" }
 
 # 统计生成的规则条目数量
-$ruleCount = $finalRules.Count
+$ruleCount = $formattedRules.Count
 
 # 获取当前时间并转换为东八区时间
 $generationTime = (Get-Date).ToUniversalTime().AddHours(8).ToString("yyyy-MM-dd HH:mm:ss")
@@ -178,8 +172,9 @@ $textContent = @"
 $($formattedRules -join "`n")
 "@
 
+
 # 定义输出文件路径
-$outputPath = "$PSScriptRoot/adblock_reject_url_rewrite.list"
+$outputPath = "$PSScriptRoot/adblock_reject_quantumult.txt"
 $textContent | Out-File -FilePath $outputPath -Encoding utf8
 
 # 输出生成的有效规则总数
