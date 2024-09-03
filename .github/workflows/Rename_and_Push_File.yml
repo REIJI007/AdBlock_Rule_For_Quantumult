@@ -13,7 +13,7 @@ jobs:
 
     - name: Rename file extension  # 重命名文件扩展名
       run: |
-        if [ -f "./adblock_reject_loon.conf" ]; then
+        if [ -f "./adblock_reject_quantumult.list" ]; then
           mv ./adblock_reject_quantumult.list ./adblock_reject_quantumult.txt
         else
           echo "File adblock_reject_quantumult.list does not exist"
