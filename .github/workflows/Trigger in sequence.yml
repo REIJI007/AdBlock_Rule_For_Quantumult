@@ -46,7 +46,7 @@ jobs:
           while [[ $retries -lt $max_retries ]]; do
             status=$(curl -s -H "Authorization: token $TOKEN" \
               -H "Accept: application/vnd.github.v3+json" \
-              "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Quantumult/actions/runs?workflow_id=$workflow_id&status=completed&branch=$ref" \
+              "https://api.github.com/repos/REI007/AdBlock_Rule_For_Quantumult/actions/runs?workflow_id=$workflow_id&status=completed&branch=$ref" \
               | jq -r '.workflow_runs[0].conclusion')
 
             if [[ "$status" == "success" ]]; then
@@ -108,4 +108,27 @@ jobs:
 
           # 验证工作流成功触发
           retries=0
-         
+          max_retries=20  # 最大重试次数
+          while [[ $retries -lt $max_retries ]]; do
+            status=$(curl -s -H "Authorization: token $TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_Quantumult/actions/runs?workflow_id=$workflow_id&status=completed&branch=$ref" \
+              | jq -r '.workflow_runs[0].conclusion')
+
+            if [[ "$status" == "success" ]]; then
+              echo "Workflow $workflow_id completed successfully."
+              break
+            elif [[ "$status" == "failure" ]]; then
+              echo "Workflow $workflow_id failed."
+              exit 1
+            else
+              echo "Waiting for workflow $workflow_id to complete... ($((retries+1))/$max_retries)"
+              retries=$((retries+1))
+              sleep 30
+            fi
+
+            if [[ $retries -eq $max_retries ]]; then
+              echo "Workflow did not complete successfully after $max_retries attempts."
+              exit 1
+            fi
+          done
