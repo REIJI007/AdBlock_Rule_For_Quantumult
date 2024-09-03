@@ -173,8 +173,9 @@ $textContent = @"
 # Generated AdBlock rules
 # Total entries: $ruleCount
 
-$($formattedRules -join "`n")
+
 [URL Rewrite]
+$($formattedRules -join "`n")
 "@
 
 # 定义输出文件路径
