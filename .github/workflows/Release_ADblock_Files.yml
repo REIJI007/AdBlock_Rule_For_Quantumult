@@ -27,15 +27,15 @@ jobs:
           tag_name=release-${{ env.time }}
           if git rev-parse "$tag_name" >/dev/null 2>&1; then
             git tag -d "$tag_name"
-            git push --delete origin "$tag_name"
+            git push origin :refs/tags/"$tag_name"
           fi
 
       # 步骤4：更新时间戳文件
       - name: Update timestamp file
         run: echo "${{ env.time }}" > timestamp.txt  # 将时间写入 timestamp.txt 文件
 
-      # 步骤5：添加、提交并推送更改（确保成功提交）
-      - name: Force add and commit changes
+      # 步骤5：添加、提交并推送更改
+      - name: Add and commit changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
@@ -43,18 +43,16 @@ jobs:
           if git diff-index --quiet HEAD; then
             echo "No changes to commit."
           else
-            git commit -m "Forced update of adblock files and timestamp"
-            git push origin main --force  # 强制推送到 main 分支
+            git commit -m "Update adblock files and timestamp"
+            git push origin main
           fi
-        env:
-          TOKEN: ${{ secrets.TOKEN }}  # 使用存储在仓库密钥中的 TOKEN
 
       # 步骤6：创建新的发布
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}  # 使用 TOKEN 进行身份验证
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}  # 使用存储在仓库密钥中的 TOKEN
         with:
           tag_name: release-${{ env.time }}  # 使用时间戳作为标签名
           release_name: Release ${{ env.time }}  # 使用时间戳作为发布名称
@@ -64,8 +62,6 @@ jobs:
       # 步骤7：上传 adblock_reject_quantumult.list
       - name: Upload adblock_reject_quantumult.list
         uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}  # 使用创建发布时生成的 URL
           asset_path: ./adblock_reject_quantumult.list
@@ -75,8 +71,6 @@ jobs:
       # 步骤8：上传 adblock_reject_quantumult.txt
       - name: Upload adblock_reject_quantumult.txt
         uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}  # 使用创建发布时生成的 URL
           asset_path: ./adblock_reject_quantumult.txt
