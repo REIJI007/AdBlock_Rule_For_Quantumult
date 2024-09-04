@@ -29,6 +29,6 @@ jobs:
         git config --global user.email 'github-actions@github.com'  # 配置提交邮箱
         git add -f adblock_reject_quantumult.txt  # 强制添加重命名后的文件
         git commit -m 'Rename and push adblock_reject_quantumult.txt' || git commit --allow-empty -m 'Empty commit to force push'  # 提交更改，若无更改则提交空更改
-        git push --force origin HEAD  # 强制推送更改
+        git push --force origin HEAD || true  # 推送更改，若失败则忽略错误
       env:
         TOKEN: ${{ secrets.TOKEN }}  # 使用 GitHub 密钥进行身份验证
