@@ -20,27 +20,64 @@ jobs:
           page=1
           
           while true; do
+            echo "Fetching page $page of failed workflow runs..."
+            
             # 获取工作流运行，包括分页
-            workflow_runs=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+            response=$(curl -s -w "\n%{http_code}" -H "Authorization: token $GITHUB_TOKEN" \
               "https://api.github.com/repos/$OWNER/$REPO/actions/runs?status=failure&per_page=$per_page&page=$page")
             
+            http_status=$(echo "$response" | tail -n1)
+            body=$(echo "$response" | sed '$d')
+            
+            echo "HTTP Status: $http_status"
+            echo "Response body:"
+            echo "$body"
+            
+            if [ "$http_status" -ne 200 ]; then
+              echo "Error: HTTP request failed with status $http_status"
+              exit 1
+            fi
+            
+            # 检查响应是否为空
+            if [ -z "$body" ]; then
+              echo "Error: Empty response received from GitHub API"
+              exit 1
+            fi
+            
+            # 验证JSON格式
+            if ! echo "$body" | jq empty; then
+              echo "Error: Invalid JSON received from GitHub API"
+              exit 1
+            fi
+            
             # 提取失败的工作流运行 ID
-            failed_run_ids=$(echo "$workflow_runs" | jq -r '.workflow_runs[].id')
+            failed_run_ids=$(echo "$body" | jq -r '.workflow_runs[].id')
             
             # 如果没有更多的失败运行，退出循环
             if [ -z "$failed_run_ids" ]; then
+              echo "No more failed runs found. Exiting loop."
               break
             fi
             
             # 删除每个失败的工作流运行
             for run_id in $failed_run_ids; do
               echo "Deleting workflow run $run_id"
-              curl -X DELETE -H "Authorization: token $GITHUB_TOKEN" \
-                "https://api.github.com/repos/$OWNER/$REPO/actions/runs/$run_id"
+              delete_response=$(curl -s -w "\n%{http_code}" -X DELETE -H "Authorization: token $GITHUB_TOKEN" \
+                "https://api.github.com/repos/$OWNER/$REPO/actions/runs/$run_id")
+              
+              delete_status=$(echo "$delete_response" | tail -n1)
+              delete_body=$(echo "$delete_response" | sed '$d')
+              
+              if [ "$delete_status" -ne 204 ]; then
+                echo "Warning: Failed to delete run $run_id. Status: $delete_status"
+                echo "Response: $delete_body"
+              else
+                echo "Successfully deleted run $run_id"
+              fi
             done
             
             # 增加页数以获取下一页结果
             page=$((page + 1))
           done
           
-          echo "All failed workflow runs have been deleted."
+          echo "All failed workflow runs have been processed."
