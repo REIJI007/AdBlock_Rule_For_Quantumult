@@ -1,0 +1,30 @@
+name: Delete Failed Workflows
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 每天午夜运行
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  delete-failed-workflows:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete failed workflows
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.repository }}
+        run: |
+          # 获取所有工作流运行
+          workflow_runs=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+            "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_quantumult/actions/runs?status=failure")
+          
+          # 提取失败的工作流运行 ID
+          failed_run_ids=$(echo "$workflow_runs" | jq -r '.workflow_runs[].id')
+          
+          # 删除每个失败的工作流运行
+          for run_id in $failed_run_ids; do
+            echo "Deleting workflow run $run_id"
+            curl -X DELETE -H "Authorization: token $GITHUB_TOKEN" \
+              "https://api.github.com/repos/$OWNER/$REPO/actions/runs/$run_id"
+          done
