@@ -11,10 +11,24 @@ jobs:
     steps:
       - name: Delete failed workflows
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          OWNER: ${{ github.repository_owner }}
-          REPO: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # 获取仓库信息
+          repo_info=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}")
+          
+          # 检查仓库信息是否成功获取
+          if [ $(echo "$repo_info" | jq -r '.message // empty') = "Not Found" ]; then
+            echo "Error: Unable to access repository. Please check your permissions."
+            exit 1
+          fi
+          
+          # 提取所有者和仓库名
+          OWNER=$(echo "$repo_info" | jq -r '.owner.login')
+          REPO=$(echo "$repo_info" | jq -r '.name')
+          
+          echo "Repository: $OWNER/$REPO"
+          
           # 设置分页参数
           per_page=100
           page=1
@@ -35,6 +49,7 @@ jobs:
             
             if [ "$http_status" -ne 200 ]; then
               echo "Error: HTTP request failed with status $http_status"
+              echo "Please ensure that GITHUB_TOKEN has the necessary permissions."
               exit 1
             fi
             
