@@ -53,7 +53,12 @@ https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adbl
 ```
 <hr>
 
-    *使用方式三：下载规则集文件adblock_reject_quantumult.list保存本地作为本地规则集，修改配置如下
+
+
+  *使用方式三：下载规则集文件adblock_reject_quantumult.list保存本地作为本地规则集，修改配置如下*
+
+
+    
 <hr>
 
 ```conf
@@ -63,6 +68,8 @@ https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adbl
 RULE-SET,/path/to/your/file.list,REJECT
 ```
 <hr>
+
+
 
 **五、关于本仓库的使用效果为什么没有普通广告过滤器效果好的疑问解答：**
 <br>
