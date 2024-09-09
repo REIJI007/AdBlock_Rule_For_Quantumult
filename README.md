@@ -32,15 +32,7 @@
 <br>
 <br>
 *简而言之就是可以让你DIY出希望得到的拦截域名Matcher Ruleset列表，缺点是此做法只适合本地定制使用，当然你也可以像本仓库一样部署到GitHub上面，见仁见智*
-<hr>
 
-```conf
-# 适用于Quantumult的本地广告域名拦截规则
-[filter_local]
-# 广告域名拦截规则文件路径
-RULE-SET,/path/to/your/file.list,REJECT
-```
-<hr>
 
 **三、本仓库引用多个广告过滤器，从这些广告过滤器中提取了被拦截条目的域名，剔除了非拦截项并去重，最后做成rule_set规则集，虽无法做到面面俱到但能减少广告带来的困扰，请自行斟酌考虑使用。碍于Quantumult的路由行为且秉持着尽可能不误杀的原则，本仓库采取域名完全匹配策略，即匹配命中于拦截列表上的域名完全一致时触发拦截，除此之外的情况给予放行。尽管这会有许多漏网之鱼的广告被放行**
 <br>
@@ -58,6 +50,17 @@ RULE-SET,/path/to/your/file.list,REJECT
 # 适用于 Quantumult 的外部远程拦截广告域名规则
 [filter_remote]
 https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult.list, tag=adblock, force-policy=REJECT, update-interval=120, opt-parser=false, enabled=true
+```
+<hr>
+
+    *使用方式三：下载规则集文件adblock_reject_quantumult.list保存本地作为本地规则集，修改配置如下
+<hr>
+
+```conf
+# 适用于Quantumult的本地广告域名拦截规则
+[filter_local]
+# 广告域名拦截规则文件路径
+RULE-SET,/path/to/your/file.list,REJECT
 ```
 <hr>
 
