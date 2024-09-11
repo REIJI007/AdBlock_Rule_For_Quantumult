@@ -11,20 +11,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Trigger and verify Run_AdBlock_Rule_Generator_quantumult_List.yml
+      - name: Trigger and verify Run_AdBlock_Rule_Generator_Quantumult.yml
         env:
           TOKEN: ${{ secrets.TOKEN }}
         run: |
-          workflow_id="Run_AdBlock_Rule_Generator_quantumult_List.yml"
+          workflow_id="Run_AdBlock_Rule_Generator_Quantumult.yml"
           ref="main"
-          # 触发工作流
           response=$(curl -X POST -H "Authorization: token $TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
             "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_quantumult/actions/workflows/$workflow_id/dispatches" \
             -d "{\"ref\":\"$ref\"}")
           echo "Triggered workflow $workflow_id: $response"
 
-          # 验证工作流成功触发和完成
+          # 验证工作流触发和完成状态
           while : ; do
             status=$(curl -s -H "Authorization: token $TOKEN" \
               -H "Accept: application/vnd.github.v3+json" \
@@ -43,7 +42,6 @@ jobs:
             fi
           done
 
-          # 等待90秒后开始下一个工作流
           echo "Waiting for 90 seconds before starting the next workflow..."
           sleep 90
 
@@ -59,14 +57,12 @@ jobs:
         run: |
           workflow_id="Rename_and_Push_File.yml"
           ref="main"
-          # 触发工作流
           response=$(curl -X POST -H "Authorization: token $TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
             "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_quantumult/actions/workflows/$workflow_id/dispatches" \
             -d "{\"ref\":\"$ref\"}")
           echo "Triggered workflow $workflow_id: $response"
 
-          # 验证工作流成功触发和完成
           while : ; do
             status=$(curl -s -H "Authorization: token $TOKEN" \
               -H "Accept: application/vnd.github.v3+json" \
@@ -85,7 +81,6 @@ jobs:
             fi
           done
 
-          # 等待90秒后开始下一个工作流
           echo "Waiting for 90 seconds before starting the next workflow..."
           sleep 90
 
@@ -101,14 +96,12 @@ jobs:
         run: |
           workflow_id="Release_ADblock_Files.yml"
           ref="main"
-          # 触发工作流
           response=$(curl -X POST -H "Authorization: token $TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
             "https://api.github.com/repos/REIJI007/AdBlock_Rule_For_quantumult/actions/workflows/$workflow_id/dispatches" \
             -d "{\"ref\":\"$ref\"}")
           echo "Triggered workflow $workflow_id: $response"
 
-          # 验证工作流成功触发和完成
           while : ; do
             status=$(curl -s -H "Authorization: token $TOKEN" \
               -H "Accept: application/vnd.github.v3+json" \
