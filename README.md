@@ -28,7 +28,7 @@
 *https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult.txt*
 <br>
 <br>
-**二、理论上任何代理拦截域名且符合广告过滤器过滤语法的列表订阅URL都可加入此adblock_rule_generator_quantumult_list.ps1脚本处理，请自行酌情添加过滤器订阅URL至脚本中进行处理，你可将该脚本代码复制到本地文本编辑器制作成.ps1后缀的文件运行在powershell上，注意修改生成的文件路径，最后在Quantumult的配置中实现调用本地生成的规则集文件，且Quantumult配置字段写成类似于如下例子**
+**二、理论上任何代理拦截域名且符合广告过滤器过滤语法的列表订阅URL都可加入此adblock_rule_generator_quantumult.ps1脚本处理，请自行酌情添加过滤器订阅URL至脚本中进行处理，你可将该脚本代码复制到本地文本编辑器制作成.ps1后缀的文件运行在powershell上，注意修改生成的文件路径，最后在Quantumult的配置中实现调用本地生成的规则集文件，且Quantumult配置字段写成类似于如下例子**
 <br>
 <br>
 *简而言之就是可以让你DIY出希望得到的拦截域名Matcher Ruleset列表，缺点是此做法只适合本地定制使用，当然你也可以像本仓库一样部署到GitHub上面，见仁见智*
@@ -77,7 +77,7 @@ RULE-SET,/path/to/your/file.list,REJECT
 <br>
 <br>
 
-**六、本仓库引用的广告过滤规则来源请查看```Referencing rule sources.txt```，后续考虑添加更多上游规则列表进行处理整合（目前126个来源）。至于是否误杀域名完全取决于这些处于上游的广告过滤器的域名拦截行为，若不满意的话可按照第二条使用adblock_rule_generator_quantumult_list.ps1脚本进行DIY本地定制化，亦或可以像本仓库一样DIY定制后部署到github上面，或者fork本仓库自行DIY**
+**六、本仓库引用的广告过滤规则来源请查看```Referencing rule sources.txt```，后续考虑添加更多上游规则列表进行处理整合（目前126个来源）。至于是否误杀域名完全取决于这些处于上游的广告过滤器的域名拦截行为，若不满意的话可按照第二条使用adblock_rule_generator_quantumult.ps1脚本进行DIY本地定制化，亦或可以像本仓库一样DIY定制后部署到github上面，或者fork本仓库自行DIY**
 <br>
 
 **七、特别鸣谢**
