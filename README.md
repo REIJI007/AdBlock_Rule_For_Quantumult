@@ -28,6 +28,13 @@
 *https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Quantumult/main/adblock_reject_quantumult.txt*
 <br>
 <br>
+
+<hr>
+
+## 警告:本过滤器订阅有可能破坏某些网站的功能，也有可能封禁某些色情、赌博网站，使用前请斟酌考虑，如有误杀请积极向上游issue反馈，本仓库仅提供去重、筛选、合并功能
+
+<hr>
+
 **二、理论上任何代理拦截域名且符合广告过滤器过滤语法的列表订阅URL都可加入此adblock_rule_generator_quantumult.ps1脚本处理，请自行酌情添加过滤器订阅URL至脚本中进行处理，你可将该脚本代码复制到本地文本编辑器制作成.ps1后缀的文件运行在powershell上，注意修改生成的文件路径，最后在Quantumult的配置中实现调用本地生成的规则集文件，且Quantumult配置字段写成类似于如下例子**
 <br>
 <br>
