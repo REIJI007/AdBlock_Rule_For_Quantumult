@@ -159,7 +159,7 @@ RULE-SET,/path/to/your/file.list,REJECT
 34、hectorm
 (https://github.com/hectorm/hblock)<br>
 35、badmojr
-(https://github.com/badmojr/1Hosts)
+(https://github.com/badmojr/1Hosts)<br>
 36、afwfv
 https://github.com/afwfv/DD-AD
 
